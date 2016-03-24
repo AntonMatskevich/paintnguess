@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <link type = "text/css" rel = "stylesheet" href = @routes.Assets.at("stylesheets/main.css")>
+        <meta charset = "UTF-8">
+        <title>Sign up to Paint'n'Guess</title>
+    </head>
+    <body>
+        <div class = "page">
+            <label for="username">Username</label>
+            <input type = "text" id="username" placeholder = "Username">
+            <br>
+            <label for="password">Password</label>
+            <input type = "text" id="password" placeholder = "Password">
+            <br>
+            <label for="repeatPassword">Repeat password</label>
+            <input type = "text" id="repeatPassword" placeholder = "Repeat password">
+            <br>
+            <label for="email">E-mail</label>
+            <input type = "text" id="email" placeholder = "E-mail">
+            <br>
+            <form action = "@routes.Application.mode()" class = "loginbutton">
+                <input type = "submit" value = "Sign up">
+            </form>
+            <form action = @routes.Application.index()>
+                <input type = "submit" value = "Home">
+            </form>
+        </div>
+    </body>
+</html>

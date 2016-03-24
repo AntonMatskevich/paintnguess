@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <link type = "text/css" rel = "stylesheet" href = '@routes.Assets.at("stylesheets/main_flexible.css")'/>
+        <meta charset = "UTF-8">
+        <title>Paint'n'Guess mode</title>
+    </head>
+    <body>
+        <div id="big_wrapper">
+            <header id="top_header">
+                <h1>Choose your mode</h1>
+            </header>
+            <nav id="top_menu">
+                <ul>
+                    <li>
+                        <button>Log out</button>
+                        @*<form id=log action = @routes.Application.index()>*@
+                            @*<input type = "submit" value = "Log out">*@
+                        @*</form>*@
+                    </li>
+                    <li>
+                        <button>Donate</button>
+                        @*<form id=don action = @routes.Application.donate()>*@
+                            @*<input type = "submit" value = "Donate">*@
+                        @*</form>*@
+                    </li>
+                    <li>
+                        <button>About us</button>
+                        @*<form id=us action = @routes.Application.aboutUs()>*@
+                            @*<input type = "submit" value = "About us & this site">*@
+                        @*</form>*@
+                    </li>
+
+                </ul>
+            </nav>
+
+            <div id="main_div">
+                <section id="main_section">
+
+                    <article>
+                        <button>Drawing</button>
+                        @*<form action = @routes.Application.drawing()>*@
+                        @*<input type = "submit" value = "Drawing">*@
+                        @*</form>*@
+                        <p>Choose this option if your playmates are someplace else. Here you explain words to eachother
+                            by drawing a picture.</p>
+                    </article>
+                    <article>
+                        <button>Cards</button>
+                        @*<form action = @routes.Application.card()>*@
+                        @*<input type = "submit" value = "Cards">*@
+                        @*</form>*@
+                        <p>Choose this option if you wish to play with your friends but don't have a physical game at hand.
+                            This mode assumes that all players are together and explain words orally or using body language.</p>
+                    </article>
+
+                </section>
+            </div>
+
+            <footer id="the_footer">
+                Paint'n'Guess team 2016
+                <p><a href='@routes.Application.aboutUs()'>About us</a></p>
+            </footer>
+        </div>
+    </body>
+</html>

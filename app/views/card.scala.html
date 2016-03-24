@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <link type = "text/css" rel = "stylesheet" href = '@routes.Assets.at("stylesheets/main_flexible.css")'/>
+        <meta charset = "UTF-8">
+        <title>Paint'n'Guess card mode</title>
+        <script src = "http://maps.googleapis.com/maps/api/js"></script>
+    </head>
+    <body>
+        <div id="big_wrapper">
+            <header id="top_header">
+                <h1>Timer: 1:00</h1>
+            </header>
+            <nav id="top_menu">
+                <ul>
+                    <li>
+                        <button>Log out</button>
+                        @*<form id=log action = @routes.Application.index()>*@
+                        @*<input type = "submit" value = "Log out">*@
+                        @*</form>*@
+                    </li>
+                    <li>
+                        <button>Donate</button>
+                        @*<form id=don action = @routes.Application.donate()>*@
+                        @*<input type = "submit" value = "Donate">*@
+                        @*</form>*@
+                    </li>
+                    <li>
+                        <button>About us</button>
+                        @*<form id=us action = @routes.Application.aboutUs()>*@
+                        @*<input type = "submit" value = "About us & this site">*@
+                        @*</form>*@
+                    </li>
+                    <li>
+                        <button>Quit game</button>
+                    </li>
+                </ul>
+            </nav>
+            <div id="main_div">
+                <section id="main_section">
+                    <article>
+                        <ul>
+                            <li>spaceship</li>
+                            <li>chicken</li>
+                            <li>lightsaber</li>
+                            <li>lasagna</li>
+                            <li>potato</li>
+                            <li>rubber duck debugging</li>
+                            <li>avocado</li>
+                        </ul>
+                    </article>
+                    <div id="guessing_buttons">
+                        <button class="skip_button">Skip</button>
+                        <button class="correct_button">Correct</button>
+                        @*<form action = @routes.Application.card()>*@
+                            @*<input type = "submit" value = "Skip" class="skipbutton">*@
+                        @*</form>*@
+                        @*<form action = @routes.Application.card()>*@
+                            @*<input type = "submit" value = "Correct" class="correctbutton">*@
+                        @*</form>*@
+                        @*<div id = "googleMap" style = "width:500px;height:380px;"></div>*@
+                    </div>
+                    @*<form action = @routes.Application.mode()>*@
+                        @*<input type = "submit" value = "Quit game">*@
+                    @*</form>*@
+                </section>
+            </div>
+            <div id="googleMap">
+                <script type='text/javascript' src='@routes.Assets.at("javascripts/googleMap.js")'></script>
+            </div>
+            <footer id="the_footer">
+                Paint'n'Guess team 2016
+                <p><a href='@routes.Application.aboutUs()'>About us</a></p>
+            </footer>
+        </div>
+    </body>
+</html>

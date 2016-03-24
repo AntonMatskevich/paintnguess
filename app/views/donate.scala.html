@@ -1,0 +1,63 @@
+@(complicatedLink: String)
+
+<!DOCTYPE html>
+<html lang = "en">
+    <head>
+        <link type = "text/css" rel = "stylesheet" href = @routes.Assets.at("stylesheets/main_flexible.css")>
+        <meta charset = "UTF-8">
+        <title>Paint'n'Guess mode</title>
+    </head>
+	<body>
+		<div id="big_wrapper">
+			<header id="top_header">
+				<h1>Please donate to help us develope this game</h1>
+			</header>
+			<nav id="top_menu">
+				<ul>
+					<li>
+						Home page
+					</li>
+					<li>
+						Donate
+					</li>
+					<div id="social_login">
+						<ul>
+							<li>
+								<button>Facebook</button>
+							</li>
+							<li>
+								<button>Google</button>
+							</li>
+							<li>
+								<button>ID-card</button>
+							</li>
+						</ul>
+					</div>
+				</ul>
+			</nav>
+			<div id="main_div">
+				<section id="main_section">
+					<p><strong>Perks of donating</strong></p>
+					<p>There are none, yet.</p>
+					<p>Links(under developement)</p>
+					<article>
+					<a href="http://www.reactionface.info/sites/default/files/images/1287666826226.png">
+					<img src=@complicatedLink></a>
+					</article>
+					<article>
+					<a href="http://www.reactionface.info/sites/default/files/images/1287666826226.png">
+					<img src="http://www.biomedicalmarketing.com/images/PayPal_logo2.jpg"></a>
+					</article>
+					<article>
+					<a href="http://www.reactionface.info/sites/default/files/images/1287666826226.png">
+					<img src="https://www.alfacashier.com/files/e/logo_black.png"></a>
+					</article>
+				</section>
+			</div>
+			<footer id="the_footer">
+				Paint'n'Guess team 2016
+				<p><a href='@routes.Application.aboutUs()'>About us</a></p>
+			</footer>
+		</div>
+	</body>
+</html>
