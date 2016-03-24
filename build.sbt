@@ -1,4 +1,4 @@
-name := "play-java-intro"
+name := "paintnguess"
 
 version := "1.0-SNAPSHOT"
 
