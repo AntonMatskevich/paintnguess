@@ -4,7 +4,7 @@ It's Paint'n'Guess's readme file.
 
 **Prototype link** is the following: https://paintnguess.herokuapp.com/
 
-[Projektiplaan](https://bitbucket.org/avlad94/paintnguess/wiki/Projektiplaan).
+[Projektiplaan](https://github.com/Samiuel/paintnguess/wiki/Projektiplaan).
 
 Paint'n'Guess is the word guessing game with two game modes:
 

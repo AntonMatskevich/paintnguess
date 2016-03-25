@@ -24,6 +24,7 @@ body{
 a{
     text-decoration: none;
     color:green;
+    background:#c1ff80;
 }
 #big_wrapper{
     max-width:1000px;
