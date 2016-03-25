@@ -13,31 +13,22 @@
             <nav id="top_menu">
                 <ul>
                     <li>
-                        <label for="username">Username</label>
-                        <input type = "text" id="username" placeholder = "Username">
-                        @*<label for="password">Password</label>*@
-                        @*<input type = "text" id="password" placeholder = "Password">*@
-                        <button>Log in</button>
+                        <form method="POST" action="@routes.DatabaseController.addUser()">
+                            <label for="userName">Username</label>
+                            <input type = "text" name="userName" id="userName" placeholder = "Username"/>
+                            <button>Log in</button>
+                        </form>
                     </li>
                     <div id="social_login">
                         <ul>
                             <li>
                                 <button>Facebook</button>
-                                @*<form action = "@routes.Application.mode()" class = "loginbutton">*@
-                                @*<input type = "submit" value = "Facebook">*@
-                                @*</form>*@
                             </li>
                             <li>
                                 <button>Google</button>
-                                @*<form action = "@routes.Application.mode()" class = "loginbutton">*@
-                                @*<input type = "submit" value = "Google">*@
-                                @*</form>*@
                             </li>
                             <li>
                                 <button>ID-card</button>
-                                @*<form action = "@routes.Application.mode()" class = "loginbutton">*@
-                                @*<input type = "submit" value = "ID-card">*@
-                                @*</form>*@
                             </li>
                         </ul>
                     </div>
@@ -45,18 +36,9 @@
             </nav>
             <div id="main_div">
                 <section id="main_section">
-                    @*<form method="POST" action="@routes.Application.registerUser()">*@
-                <form>
-                    <label for="username">Username</label>
-                    <input type = "text" id="username" placeholder = "Username"/>
-                    <label for="email">E-mail</label>
-                    <input type = "text" id="email" placeholder = "E-mail"/>
-                    <label for="password">Password</label>
-                    <input type = "text" id="password" placeholder = "Password"/>
-                    <label for="repeatPassword">Repeat password</label>
-                    <input type = "text" id="repeatPassword" placeholder = "Repeat password"/>
-                    <button>Sign up</button>
-                </form>
+                    <article>
+                        <h1>Your advertisement could be here!</h1>
+                    </article>
                 </section>
             </div>
             <footer id="the_footer">

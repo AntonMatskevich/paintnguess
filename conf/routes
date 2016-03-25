@@ -13,6 +13,10 @@ GET     /drawing_game               controllers.Application.drawingGame()
 #GET     /login                      controllers.Application.login()
 #GET     /signup                     controllers.Application.signup()
 
+#Database
+POST    /user                       controllers.DatabaseController.addUser()
+GET     /users                      controllers.DatabaseController.getUsers()
+
 # Demo page
 GET     /demo                       controllers.Application.demo()
 POST    /person                     controllers.Application.addPerson()
