@@ -32,7 +32,7 @@ public class Application extends Controller {
     }
 
     public Result donate() {
-        return ok(views.html.donate.render(dirtyLink));
+        return ok(views.html.donate.render());
     }
 
     public Result drawing() {
