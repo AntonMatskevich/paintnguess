@@ -13,7 +13,7 @@ import static play.libs.Json.*;
 
 public class Application extends Controller {
 
-    String dirtyLink = "https://www.swedbank.com/idc/groups/public/@i/@sbg/@gs/documents/logotype/cid_007184@t~a1.jpg";
+//    String dirtyLink = "https://www.swedbank.com/idc/groups/public/@i/@sbg/@gs/documents/logotype/cid_007184@t~a1.jpg";
 
     public Result index() {
         return ok(views.html.index.render());
