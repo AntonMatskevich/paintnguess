@@ -52,6 +52,7 @@ a{
     background:#c1ff80;
 }
 #top_menu ul{
+    display:inline-block;
     background:#c1ff80;
 }
 #social_login{
