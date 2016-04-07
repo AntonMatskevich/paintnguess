@@ -1,16 +1,11 @@
 package controllers;
 
+
 import models.User;
-import play.data.FormFactory;
-import play.db.jpa.JPA;
-import play.db.jpa.Transactional;
+import play.data.Form;
 import play.mvc.Result;
 
-import javax.inject.Inject;
-
-import java.util.List;
-
-import static play.libs.Json.toJson;
+import static play.mvc.Results.badRequest;
 import static play.mvc.Results.ok;
 import static play.mvc.Results.redirect;
 
@@ -19,20 +14,28 @@ import static play.mvc.Results.redirect;
  */
 public class DatabaseController {
 
-    @Inject
-    FormFactory formFactory;
-    @Transactional
-    public Result addUser(){
-        User user = formFactory.form(User.class).bindFromRequest().get();
-        JPA.em().persist(user);
-        return redirect(routes.Application.mode());
+    static Form<User> userForm = Form.form(User.class);
+
+    public static Result addUser(){
+        Form<User> filledForm = userForm.bindFromRequest();
+        if(filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.users.render(User.all(), filledForm)
+            );
+        } else {
+            User.create(filledForm.get());
+            return redirect(routes.DatabaseController.getUsers());
+        }
     }
 
     //View users
-    @Transactional(readOnly = true)
-    public Result getUsers(){
-        List<User> users = (List<User>) JPA.em().createQuery("select u from User u").getResultList();
-        return ok(toJson(users));
+    public static Result getUsers(){
+        return ok(views.html.users.render(User.all(), userForm));
+    }
+
+    public static Result deleteUser(Integer id) {
+        User.delete(id);
+        return redirect(routes.DatabaseController.getUsers());
     }
 
 }

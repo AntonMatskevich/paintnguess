@@ -1,67 +1,67 @@
 package controllers;
 
+import models.Task;
 import play.*;
+import play.data.Form;
 import play.mvc.*;
-import play.db.jpa.*;
-import views.html.*;
-import models.Person;
-import play.data.FormFactory;
-import javax.inject.Inject;
-import java.util.List;
 
-import static play.libs.Json.*;
+import views.html.*;
 
 public class Application extends Controller {
 
-//    String dirtyLink = "https://www.swedbank.com/idc/groups/public/@i/@sbg/@gs/documents/logotype/cid_007184@t~a1.jpg";
 
-    public Result index() {
+    public static Result index() {
         return ok(views.html.index.render());
     }
 
-    public Result mode() {
+    public static Result mode() {
         return ok(views.html.mode.render());
     }
 
-    public Result aboutUs() {
+    public static Result aboutUs() {
         return ok(views.html.aboutus.render());
     }
 
-    public Result card() {
+    public static Result card() {
         return ok(views.html.card.render());
     }
 
-    public Result donate() {
+    public static Result donate() {
         return ok(views.html.donate.render());
     }
 
-    public Result drawing() {
+    public static Result drawing() {
         return ok(views.html.drawing.render());
     }
 
-    public Result drawingGame() {
+    public static Result drawingGame() {
         return ok(views.html.drawing_game.render());
     }
 
 
 
-    ////////////////DEMO
-    public Result demo() {
-        return ok(demo.render());
+    ////////////////Das ist keine demo Scheisse
+    static Form<Task> taskForm = Form.form(Task.class);
+
+    public static Result tasks() {
+        return ok(views.html.demo.render(Task.all(), taskForm));
     }
 
-    @Inject
-    FormFactory formFactory;
-    @Transactional
-    public Result addPerson() {
-        Person person = formFactory.form(Person.class).bindFromRequest().get();
-        JPA.em().persist(person);
-        return redirect(routes.Application.demo());
+    public static Result newTask() {
+        Form<Task> filledForm = taskForm.bindFromRequest();
+        if(filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.demo.render(Task.all(), filledForm)
+            );
+        } else {
+            Task.create(filledForm.get());
+            return redirect(routes.Application.tasks());
+        }
     }
 
-    @Transactional(readOnly = true)
-    public Result getPersons() {
-        List<Person> persons = (List<Person>) JPA.em().createQuery("select p from Person p").getResultList();
-        return ok(toJson(persons));
+    public static Result deleteTask(Long id) {
+        Task.delete(id);
+        return redirect(routes.Application.tasks());
     }
+
 }

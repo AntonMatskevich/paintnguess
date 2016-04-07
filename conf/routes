@@ -16,11 +16,12 @@ GET     /drawing_game               controllers.Application.drawingGame()
 #Database
 POST    /user                       controllers.DatabaseController.addUser()
 GET     /users                      controllers.DatabaseController.getUsers()
+POST    /user/:id/delete            controllers.DatabaseController.deleteUser(id: Integer)
 
-# Demo page
-GET     /demo                       controllers.Application.demo()
-POST    /person                     controllers.Application.addPerson()
-GET     /persons                    controllers.Application.getPersons
+# Tasks (demo)
+GET     /demo                       controllers.Application.tasks()
+POST    /demo                       controllers.Application.newTask()
+POST    /demo/:id/delete            controllers.Application.deleteTask(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
