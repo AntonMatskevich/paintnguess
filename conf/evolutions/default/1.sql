@@ -2,6 +2,7 @@
 # To stop Ebean DDL generation, remove this comment and start using Evolutions
 
 # --- !Ups
+
 create table user (
   id                        integer not null,
   user_name                 varchar(255),
