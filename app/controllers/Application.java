@@ -1,12 +1,8 @@
 package controllers;
 
-import models.Task;
 import models.User;
-import play.*;
 import play.data.Form;
 import play.mvc.*;
-
-import views.html.*;
 
 public class Application extends Controller {
 
