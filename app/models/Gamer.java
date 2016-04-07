@@ -10,21 +10,21 @@ import java.util.List;
  * Created by Anton on 25.03.16.
  */
 @Entity
-public class User extends Model{
+public class Gamer extends Model{
 
     @Id
     public Integer id;
     @Constraints.Required
-    public String userName;
+    public String name;
 
-    public static Finder<Integer, User> find = new Finder<Integer, User>(Integer.class, User.class);
+    public static Finder<Integer, Gamer> find = new Finder<Integer, Gamer>(Integer.class, Gamer.class);
 
-    public static List<User> all() {
+    public static List<Gamer> all() {
         return find.all();
     }
 
-    public static void create(User user) {
-        user.save();
+    public static void create(Gamer gamer) {
+        gamer.save();
     }
 
     public static void delete(Integer id) {

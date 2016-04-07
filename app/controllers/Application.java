@@ -1,15 +1,17 @@
 package controllers;
 
-import models.User;
+import models.Gamer;
 import play.data.Form;
+import play.data.validation.ValidationError;
 import play.mvc.*;
+
+import java.util.List;
 
 public class Application extends Controller {
 
 
     public static Result index() {
         return ok(views.html.index.render());
-//        return redirect(routes.DatabaseController.getUsers());
     }
 
     public static Result mode() {
@@ -37,33 +39,43 @@ public class Application extends Controller {
     }
 
     public static Result login() {
-        return redirect(routes.Application.getUsers());
+        return redirect(routes.Application.getGamers());
     }
 
 
     ///////DATABASE
-    static Form<User> userForm = Form.form(User.class);
+    static Form<Gamer> gamerForm = Form.form(Gamer.class);
 
-    public static Result addUser(){
-        Form<User> filledForm = userForm.bindFromRequest();
-        if(filledForm.hasErrors()) {
+    public static Result addGamer(){
+        Form<Gamer> filledForm = gamerForm.bindFromRequest();
+        if (filledForm.hasErrors()) {
+//            String errorMsg = "";
+//            java.util.Map<String, List<ValidationError>> errorsAll = filledForm.errors();
+//            for (String field : errorsAll.keySet()) {
+//                errorMsg += field + " ";
+//                for (ValidationError error : errorsAll.get(field)) {
+//                    errorMsg += error.message() + ", ";
+//                }
+//            }
+//            flash("error", "Please correct the following errors: " + errorMsg);
+//            return badRequest(views.html.index.render());
             return badRequest(
-                    views.html.login.render(User.all(), filledForm)
+                    views.html.login.render(Gamer.all(), filledForm)
             );
         } else {
-            User.create(filledForm.get());
+            Gamer.create(filledForm.get());
             return redirect(routes.Application.mode());
         }
     }
 
-    //View users
-    public static Result getUsers(){
-        return ok(views.html.login.render(User.all(), userForm));
+    //View gamers
+    public static Result getGamers(){
+        return ok(views.html.login.render(Gamer.all(), gamerForm));
     }
 
-    public static Result deleteUser(Integer id) {
-        User.delete(id);
-        return redirect(routes.Application.getUsers());
+    public static Result deleteGamer(Integer id) {
+        Gamer.delete(id);
+        return redirect(routes.Application.getGamers());
     }
 
 }

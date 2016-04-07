@@ -3,13 +3,13 @@
 
 # --- !Ups
 
-create table user (
+create table gamer (
   id                        integer not null,
-  user_name                 varchar(255),
-  constraint pk_user primary key (id))
+  name                      varchar(255),
+  constraint pk_gamer primary key (id))
 ;
 
-create sequence user_seq;
+create sequence gamer_seq;
 
 
 
@@ -18,9 +18,9 @@ create sequence user_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists user;
+drop table if exists gamer;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists user_seq;
+drop sequence if exists gamer_seq;
 
