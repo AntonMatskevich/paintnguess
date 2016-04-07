@@ -1,6 +1,7 @@
 package controllers;
 
 import models.Task;
+import models.User;
 import play.*;
 import play.data.Form;
 import play.mvc.*;
@@ -12,6 +13,7 @@ public class Application extends Controller {
 
     public static Result index() {
         return ok(views.html.index.render());
+//        return redirect(routes.DatabaseController.getUsers());
     }
 
     public static Result mode() {
@@ -38,30 +40,34 @@ public class Application extends Controller {
         return ok(views.html.drawing_game.render());
     }
 
-
-
-    ////////////////Das ist keine demo Scheisse
-    static Form<Task> taskForm = Form.form(Task.class);
-
-    public static Result tasks() {
-        return ok(views.html.demo.render(Task.all(), taskForm));
+    public static Result login() {
+        return redirect(routes.Application.getUsers());
     }
 
-    public static Result newTask() {
-        Form<Task> filledForm = taskForm.bindFromRequest();
+
+    ///////DATABASE
+    static Form<User> userForm = Form.form(User.class);
+
+    public static Result addUser(){
+        Form<User> filledForm = userForm.bindFromRequest();
         if(filledForm.hasErrors()) {
             return badRequest(
-                    views.html.demo.render(Task.all(), filledForm)
+                    views.html.login.render(User.all(), filledForm)
             );
         } else {
-            Task.create(filledForm.get());
-            return redirect(routes.Application.tasks());
+            User.create(filledForm.get());
+            return redirect(routes.Application.mode());
         }
     }
 
-    public static Result deleteTask(Long id) {
-        Task.delete(id);
-        return redirect(routes.Application.tasks());
+    //View users
+    public static Result getUsers(){
+        return ok(views.html.login.render(User.all(), userForm));
+    }
+
+    public static Result deleteUser(Integer id) {
+        User.delete(id);
+        return redirect(routes.Application.getUsers());
     }
 
 }
