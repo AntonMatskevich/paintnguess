@@ -11,7 +11,7 @@ public class Application extends Controller {
 
 
     public static Result index() {
-        return ok(views.html.index.render());
+        return ok(views.html.index.render(Gamer.all(), gamerForm));
     }
 
     public static Result mode() {
@@ -60,7 +60,7 @@ public class Application extends Controller {
 //            flash("error", "Please correct the following errors: " + errorMsg);
 //            return badRequest(views.html.index.render());
             return badRequest(
-                    views.html.login.render(Gamer.all(), filledForm)
+                    views.html.index.render(Gamer.all(), filledForm)
             );
         } else {
             Gamer.create(filledForm.get());
@@ -76,6 +76,9 @@ public class Application extends Controller {
     public static Result deleteGamer(Integer id) {
         Gamer.delete(id);
         return redirect(routes.Application.getGamers());
+    }
+    public static Result deleteGamer() {
+        return TODO;
     }
 
 }

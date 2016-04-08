@@ -15,6 +15,7 @@ GET     /drawing_game               controllers.Application.drawingGame()
 
 # Login
 GET     /login                      controllers.Application.getGamers()
+POST    /                           controllers.Application.addGamer()
 POST    /login                      controllers.Application.addGamer()
 POST    /login/:id/delete           controllers.Application.deleteGamer(id: Integer)
 
