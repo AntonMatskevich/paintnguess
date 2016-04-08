@@ -38,9 +38,9 @@ public class Application extends Controller {
         return ok(views.html.drawing_game.render());
     }
 
-    public static Result login() {
-        return redirect(routes.Application.getGamers());
-    }
+//    public static Result removeGamer() {
+//        return redirect(routes.Application.getGamers());
+//    }
 
 
     ///////DATABASE
@@ -49,16 +49,6 @@ public class Application extends Controller {
     public static Result addGamer(){
         Form<Gamer> filledForm = gamerForm.bindFromRequest();
         if (filledForm.hasErrors()) {
-//            String errorMsg = "";
-//            java.util.Map<String, List<ValidationError>> errorsAll = filledForm.errors();
-//            for (String field : errorsAll.keySet()) {
-//                errorMsg += field + " ";
-//                for (ValidationError error : errorsAll.get(field)) {
-//                    errorMsg += error.message() + ", ";
-//                }
-//            }
-//            flash("error", "Please correct the following errors: " + errorMsg);
-//            return badRequest(views.html.index.render());
             return badRequest(
                     views.html.index.render(Gamer.all(), filledForm)
             );
@@ -70,7 +60,7 @@ public class Application extends Controller {
 
     //View gamers
     public static Result getGamers(){
-        return ok(views.html.login.render(Gamer.all(), gamerForm));
+        return ok(views.html.remove_gamer.render(Gamer.all(), gamerForm));
     }
 
     public static Result deleteGamer(Integer id) {

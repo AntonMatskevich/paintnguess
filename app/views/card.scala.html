@@ -14,27 +14,27 @@
             <nav id="top_menu">
                 <ul>
                     <li>
-                        <button>Log out</button>
-                        @*<form id=log action = @routes.Application.index()>*@
-                        @*<input type = "submit" value = "Log out">*@
-                        @*</form>*@
+                        <a href='@routes.Application.index()'>Home page</a>
                     </li>
                     <li>
-                        <button>Donate</button>
-                        @*<form id=don action = @routes.Application.donate()>*@
-                        @*<input type = "submit" value = "Donate">*@
-                        @*</form>*@
+                        <a href='@routes.Application.aboutUs()'>About us</a>
                     </li>
                     <li>
-                        <button>About us</button>
-                        @*<form id=us action = @routes.Application.aboutUs()>*@
-                        @*<input type = "submit" value = "About us & this site">*@
-                        @*</form>*@
+                        <a href='@routes.Application.donate()'>Donate</a>
                     </li>
                     <li>
-                        <button>Quit game</button>
+                        <a href='@routes.Application.mode()'>Quit game</a>
                     </li>
                 </ul>
+                <div id="social_login">
+                    <ul>
+                        <li>
+                            <form method="GET" action='@routes.Application.getGamers()'>
+                                <button>Log out</button>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
             </nav>
             <div id="main_div">
                 <section id="main_section">
@@ -52,17 +52,7 @@
                     <div id="guessing_buttons">
                         <button class="skip_button">Skip</button>
                         <button class="correct_button">Correct</button>
-                        @*<form action = @routes.Application.card()>*@
-                            @*<input type = "submit" value = "Skip" class="skipbutton">*@
-                        @*</form>*@
-                        @*<form action = @routes.Application.card()>*@
-                            @*<input type = "submit" value = "Correct" class="correctbutton">*@
-                        @*</form>*@
-                        @*<div id = "googleMap" style = "width:500px;height:380px;"></div>*@
                     </div>
-                    @*<form action = @routes.Application.mode()>*@
-                        @*<input type = "submit" value = "Quit game">*@
-                    @*</form>*@
                 </section>
             </div>
             <div id="googleMap">

@@ -161,3 +161,7 @@ form, dd {
     display: inline;
     background: #c1ff80;
 }
+
+#specialButton {
+    background: #EDFFE6;
+}
