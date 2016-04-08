@@ -1,1 +1,1 @@
-web: target/universal/stage/bin/paintnguess -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.url=${DATABASE_URL} -Ddb.default.driver=org.postgresql.Driver -Dplay.evolutions.db.default.autoApplyDowns=true
+web: target/universal/stage/bin/paintnguess -Dhttp.port=${PORT} -DapplyEvolutions.default=true -Ddb.default.url=${DATABASE_URL} -Ddb.default.driver=org.postgresql.Driver
