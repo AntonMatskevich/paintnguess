@@ -5,7 +5,6 @@
 <html lang = "en">
     <head>
         <link type="text/css" rel="stylesheet" href='@routes.Assets.at("stylesheets/main_flexible.css")'>
-        <meta charset = "UTF-8">
         <title>Paint'n'Guess</title>
     </head>
     <body>
@@ -20,8 +19,13 @@
                             <label for="name">Username</label>
                             <input type = "text" name="name" id="name" placeholder = "Username"/>
                             <input type="submit" value="Log in">
-                            @*<dd class="error">This field is required!</dd>*@
                         }
+                    </li>
+                    <li>
+                        <a href='@routes.Application.aboutUs()'>About us</a>
+                    </li>
+                    <li>
+                        <a href='@routes.Application.donate()'>Donate</a>
                     </li>
                 </ul>
                     <div id="social_login">

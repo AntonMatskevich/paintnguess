@@ -12,6 +12,10 @@ GET     /drawing                    controllers.Application.drawing()
 GET     /drawing_game               controllers.Application.drawingGame()
 #GET     /signup                     controllers.Application.signup()
 
+#Authentication
+GET     /login                      controllers.Application.login()
+POST    /login                      controllers.Application.authenticate()
+
 
 # Login
 GET     /remove                      controllers.Application.getGamers()

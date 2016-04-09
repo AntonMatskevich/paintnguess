@@ -4,6 +4,8 @@ import models.Gamer;
 import play.data.Form;
 import play.data.validation.ValidationError;
 import play.mvc.*;
+import play.data.*;
+import static play.data.Form.*;
 
 import java.util.List;
 
@@ -14,6 +16,7 @@ public class Application extends Controller {
         return ok(views.html.index.render(Gamer.all(), gamerForm));
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result mode() {
         return ok(views.html.mode.render());
     }
@@ -22,6 +25,7 @@ public class Application extends Controller {
         return ok(views.html.aboutus.render());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result card() {
         return ok(views.html.card.render());
     }
@@ -30,10 +34,12 @@ public class Application extends Controller {
         return ok(views.html.donate.render());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result drawing() {
         return ok(views.html.drawing.render());
     }
 
+    @Security.Authenticated(Secured.class)
     public static Result drawingGame() {
         return ok(views.html.drawing_game.render());
     }
@@ -41,6 +47,26 @@ public class Application extends Controller {
 //    public static Result removeGamer() {
 //        return redirect(routes.Application.getGamers());
 //    }
+
+    /////////////Authentication
+    public static Result login() {
+        return ok(
+                views.html.login.render(Form.form(Login.class))
+        );
+    }
+
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+            return badRequest(views.html.login.render(loginForm));
+        } else {
+            session().clear();
+            session("name", loginForm.get().name);
+            return redirect(
+                    routes.Application.card()
+            );
+        }
+    }
 
 
     ///////DATABASE
@@ -69,6 +95,19 @@ public class Application extends Controller {
     }
     public static Result deleteGamer() {
         return TODO;
+    }
+
+    public static class Login {
+
+        public String name;
+
+        public String validate() {
+            if (Gamer.authenticate(name) == null) {
+                return "Invalid username";
+            }
+            return null;
+        }
+
     }
 
 }

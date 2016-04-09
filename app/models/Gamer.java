@@ -31,4 +31,8 @@ public class Gamer extends Model{
         find.ref(id).delete();
     }
 
+    public static Gamer authenticate(String name) {
+        return find.where().eq("name", name).findUnique();
+    }
+
 }
