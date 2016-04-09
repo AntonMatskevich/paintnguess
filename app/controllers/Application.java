@@ -48,6 +48,20 @@ public class Application extends Controller {
 //        return redirect(routes.Application.getGamers());
 //    }
 
+    ///////DATABASE
+    static Form<Gamer> gamerForm = Form.form(Gamer.class);
+
+    public static Result addGamer(){
+        Form<Gamer> filledForm = gamerForm.bindFromRequest();
+        if (filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.index.render(Gamer.all(), filledForm)
+            );
+        } else {
+            Gamer.create(filledForm.get());
+            return redirect(routes.Application.mode());
+        }
+    }
     /////////////Authentication
     public static Result login() {
         return ok(
@@ -63,24 +77,8 @@ public class Application extends Controller {
             session().clear();
             session("name", loginForm.get().name);
             return redirect(
-                    routes.Application.card()
+                    routes.Application.mode()
             );
-        }
-    }
-
-
-    ///////DATABASE
-    static Form<Gamer> gamerForm = Form.form(Gamer.class);
-
-    public static Result addGamer(){
-        Form<Gamer> filledForm = gamerForm.bindFromRequest();
-        if (filledForm.hasErrors()) {
-            return badRequest(
-                    views.html.index.render(Gamer.all(), filledForm)
-            );
-        } else {
-            Gamer.create(filledForm.get());
-            return redirect(routes.Application.mode());
         }
     }
 
@@ -92,9 +90,6 @@ public class Application extends Controller {
     public static Result deleteGamer(Integer id) {
         Gamer.delete(id);
         return redirect(routes.Application.getGamers());
-    }
-    public static Result deleteGamer() {
-        return TODO;
     }
 
     public static class Login {

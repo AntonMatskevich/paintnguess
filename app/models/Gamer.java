@@ -6,6 +6,8 @@ import play.db.ebean.Model;
 import javax.persistence.*;
 import java.util.List;
 
+import static play.mvc.Controller.session;
+
 /**
  * Created by Anton on 25.03.16.
  */
@@ -24,7 +26,9 @@ public class Gamer extends Model{
     }
 
     public static void create(Gamer gamer) {
+        session().clear();
         gamer.save();
+        session("name", gamer.name);
     }
 
     public static void delete(Integer id) {
