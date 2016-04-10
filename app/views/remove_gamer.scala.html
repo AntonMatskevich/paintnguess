@@ -9,7 +9,7 @@
     <ul>
     @for(gamer <- gamers) {
         <li>
-            @gamer.name
+            @gamer.id:  @gamer.name
 
             @form(routes.Application.deleteGamer(gamer.id)) {
                 <input type="submit" value="Delete">

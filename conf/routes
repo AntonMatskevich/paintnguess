@@ -15,12 +15,12 @@ GET     /drawing_game               controllers.Application.drawingGame()
 #Authentication
 GET     /login                      controllers.Application.login()
 POST    /login                      controllers.Application.authenticate()
+GET     /logout                     controllers.Application.logout()
 
 
 # Login
 GET     /remove                     controllers.Application.getGamers()
 POST    /                           controllers.Application.addGamer()
-POST    /remove                     controllers.Application.addGamer()
 POST    /remove/:id/delete          controllers.Application.deleteGamer(id: Integer)
 
 # Painter

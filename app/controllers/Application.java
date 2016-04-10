@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Gamer;
 import models.PaintRoom;
+import play.api.mvc.Session;
 import play.data.Form;
 import play.data.validation.ValidationError;
 import play.mvc.*;
@@ -72,6 +73,14 @@ public class Application extends Controller {
         );
     }
 
+    public static Result logout() {
+        session().clear();
+        flash("success", "You've been logged out");
+        return redirect(
+                routes.Application.index()
+        );
+    }
+
     public static Result authenticate() {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
@@ -91,6 +100,7 @@ public class Application extends Controller {
     }
 
     public static Result deleteGamer(Integer id) {
+
         Gamer.delete(id);
         return redirect(routes.Application.getGamers());
     }
