@@ -11,7 +11,6 @@ GET     /donate                     controllers.Application.donate()
 GET     /drawing                    controllers.Application.drawing()
 GET     /drawing_game               controllers.Application.drawingGame()
 #GET     /signup                     controllers.Application.signup()
-GET		/fbsignin						controllers.Application.facebook()
 
 #Authentication
 GET     /login                      controllers.Application.login()
