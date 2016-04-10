@@ -47,10 +47,7 @@ public class Application extends Controller {
     public static Result drawingGame() {
         return ok(views.html.drawing_game.render());
     }
-    
-    public static Result facebook(){
-    	return ok(views.html.fbsignin.render());
-    }
+
     
 //    public static Result removeGamer() {
 //        return redirect(routes.Application.getGamers());
