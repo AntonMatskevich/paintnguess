@@ -47,6 +47,10 @@ public class Application extends Controller {
     public static Result drawingGame() {
         return ok(views.html.drawing_game.render());
     }
+//<<<<<<< HEAD
+//=======
+
+//>>>>>>> 21ee81d7429e0ce1606a25dfc56b5e0b3cd4c7ff
     
 //    public static Result removeGamer() {
 //        return redirect(routes.Application.getGamers());
