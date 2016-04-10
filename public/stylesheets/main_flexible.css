@@ -165,3 +165,7 @@ form, dd {
 #specialButton {
     background: #EDFFE6;
 }
+
+#chat, #painter, #controls {
+    display: inline;
+}

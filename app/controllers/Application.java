@@ -1,10 +1,13 @@
 package controllers;
 
+import com.fasterxml.jackson.databind.JsonNode;
 import models.Gamer;
+import models.PaintRoom;
 import play.data.Form;
 import play.data.validation.ValidationError;
 import play.mvc.*;
 import play.data.*;
+
 import static play.data.Form.*;
 
 import java.util.List;
@@ -102,6 +105,28 @@ public class Application extends Controller {
             }
             return null;
         }
+
+    }
+
+    //////////////PAINTER
+    static PaintRoom env = new PaintRoom("Public");
+
+    public static Result painter() {
+        return ok(views.html.painter.render(env));
+    }
+
+    public static WebSocket<JsonNode> stream() {
+
+        return new WebSocket<JsonNode>() {
+            @Override
+            public void onReady(In<JsonNode> in, Out<JsonNode> out) {
+                try{
+                    env.createPainter(in, out);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
 
     }
 

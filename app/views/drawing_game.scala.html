@@ -51,13 +51,15 @@
             <div id="main_div">
                 <section id="main_section">
                     <article>
-                    <div id="chat">
-                        chat wannabe
-                    </div></article>
-                    <article>
-                    <div id="painting">
-                        Painting
-                    </div></article>
+                        <div id="painter">
+                            <canvas id="chat" width="250" height="300"></canvas>
+                            <canvas id="me" width="500" height="300"></canvas>
+                            <canvas id="positions" width="500" height="300"></canvas>
+                            <canvas id="draws" width="500" height="300"></canvas>
+                            <canvas id="controls" width="50" height="300"></canvas>
+                        </div>
+                        <script type="text/javascript" src='@routes.Assets.at("javascripts/painter.js")'></script>
+                    </article>
                     <div id="guessing_buttons">
                         <form method="GET" id="specialButton" action='@routes.Application.drawingGame()'>
                             <button class="skip_button">Skip</button>

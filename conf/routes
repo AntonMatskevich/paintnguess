@@ -18,10 +18,14 @@ POST    /login                      controllers.Application.authenticate()
 
 
 # Login
-GET     /remove                      controllers.Application.getGamers()
-POST    /                            controllers.Application.addGamer()
-POST    /remove                      controllers.Application.addGamer()
-POST    /remove/:id/delete           controllers.Application.deleteGamer(id: Integer)
+GET     /remove                     controllers.Application.getGamers()
+POST    /                           controllers.Application.addGamer()
+POST    /remove                     controllers.Application.addGamer()
+POST    /remove/:id/delete          controllers.Application.deleteGamer(id: Integer)
+
+# Painter
+GET     /painter                    controllers.Application.painter()
+GET     /stream                     controllers.Application.stream()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
