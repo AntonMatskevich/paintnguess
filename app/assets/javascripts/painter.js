@@ -38,7 +38,7 @@
     var isMobile = /ipad|iphone|android/i.test(navigator.userAgent)
 
     // CONSTANTS
-    var COLORS = ['red', 'blue', 'yellow', 'green', 'white'];
+    var COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
     var SIZES = [2, 5, 8, 10, 14];
     var MIN_SEND_RATE = 50; // the min interval in ms between 2 send
 
@@ -108,7 +108,7 @@
                 }
                 connected = true;
                 send({ type: 'change', size: size, color: color, name: pname });
-            }
+            };
             socket.onclose = function(evt) {
                 connected = false;
                 tryConnectAgain();
@@ -165,7 +165,7 @@
             }
 
             dirty_positions = true;
-        }
+        };
 
         var w = canvas.width, h = canvas.height;
         ctx.fillStyle = 'white';
@@ -322,8 +322,8 @@
         function setup() {
             canvas.addEventListener("click", function (e) {
                 var o = $(canvas).offset();
-                var p = { x: e.clientX-o.left, y: e.clientY-o.top };
-                var i = Math.floor(p.x / BUTTON);
+                var p = { x: e.clientX-o.left - 50, y: e.clientY-o.top };
+                var i = Math.floor(p.x / BUTTON );
                 if (i < COLORS.length) {
                     setColor(COLORS[i]);
                 }
@@ -364,6 +364,18 @@
             }
         });
 
+        document.addEventListener("dblclick", function (e) {
+            var canvas = document.getElementById("draws");
+            var ctx = canvas.getContext("2d");
+            ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+            dirty = true;
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
+            var w = canvas.width, h = canvas.height;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, w, h);
+        });
+
         function render() {
             if (!dirty) return;
             dirty = false;
@@ -374,7 +386,7 @@
             ctx.fillRect(0, 0, w, h);
 
             // draw colors
-            x = BUTTON/2, y = h/2, radius = RADIUS;
+            x = BUTTON/2 + 50, y = h/2, radius = RADIUS;
             COLORS.forEach(function(c) {
                 ctx.fillStyle = c;
                 ctx.beginPath();
@@ -394,7 +406,7 @@
             });
 
             // draw sizes
-            ctx.fillStyle = 'black';
+            ctx.fillStyle = 'DarkGray';
             SIZES.forEach(function(s) {
                 ctx.beginPath();
                 ctx.arc(x, y, s, 0, 2*Math.PI);

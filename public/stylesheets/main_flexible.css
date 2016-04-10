@@ -1,75 +1,75 @@
-*{
+* {
     margin:0px;
     padding:0px;
     font-family: Palatino Linotype;
     background:#EDFFE6;
 }
-h1{
+h1 {
     font:bold 26px Palatino Linotype;
     text-align:center;
     background:#c1ff80;
 }
-h2{
+h2 {
     font:bold 14px Palatino Linotype;
     background:#c1ff80;
 }
-header, section, footer, nav, article{
+header, section, footer, nav, article {
     display:block;
 }
-body{
+body {
     width:100%;
     display:-webkit-box;
     -webkit-box-pack:center;
 }
-a{
+a {
     text-decoration: none;
     color:green;
     background:#c1ff80;
 }
-#big_wrapper{
+#big_wrapper {
     max-width:1000px;
     margin:20px 0px;
     display:-webkit-box;
     -webkit-box-orient:vertical;
     -webkit-box-flex: 1;
 }
-#top_header{
+#top_header {
     background:#c1ff80;
     /*border:3px solid black;*/
     padding:20px;
     border-bottom:2px solid green;
 }
-#top_menu{
+#top_menu {
     background:#c1ff80;
     color:green;
     border-bottom:2px solid green;
 }
-#top_menu li{
+#top_menu li {
     display:inline-block;
     list-style:none;
     padding:5px;
     font:bold 14px Palatino Linotype;
     background:#c1ff80;
 }
-#top_menu ul{
+#top_menu ul {
     display:inline-block;
     background:#c1ff80;
 }
-#social_login{
+#social_login {
     float: right;
 }
-#main_div{
+#main_div {
     display:-webkit-box;
     -webkit-box-orient:horizontal;
 }
-#main_section{
+#main_section {
     border:1px solid #c1ff80;
     -webkit-box-flex: 1;
     margin:20px;
     padding:20px;
 }
 /*Check width of this mazafaka footer! It's too long being 1000px.*/
-#the_footer{
+#the_footer {
     /*position: absolute;*/
     /*bottom: 20px;*/
     max-width:970px;
@@ -79,21 +79,21 @@ a{
     border-top:2px solid green;
     background:#c1ff80;
 }
-#the_footer p{
+#the_footer p {
     background:#c1ff80;
 }
 #the_footer a{
     background:#c1ff80;
 }
 
-article{
+article {
     border: 1px solid green;
     padding: 20px;
     margin-bottom: 15px;
     text-align: center;
 }
 
-article li{
+article li {
     list-style: none;
 }
 
@@ -103,29 +103,29 @@ button, input[type=submit] {
     background:#A2FF80;
 }
 
-label{
+label {
     display: none;
 }
 
-#guessing_buttons button{
+#guessing_buttons button {
     padding:10px;
     margin: 5px;
 }
 
-.skip_button{
+.skip_button {
     background:darkslategray;
     color:white;
     float:left;
     width:45%;
 }
-.correct_button{
+.correct_button {
     background:green;
     color:white;
     float:right;
     width:45%;
 }
 
-.ready_button{
+.ready_button {
     padding:10px;
     margin: 5px;
     background:green;
@@ -136,23 +136,23 @@ label{
     width:60%;
 }
 
-#words{
+#words {
     float:right;
     color:red;
 }
-#words li{
+#words li {
     padding-left:10px;
     margin-top:2px;
 }
 
-#chat{
+#chat {
     color:red;
 }
-#painting{
+#painting {
     color:pink;
 }
 
-#googleMap{
+#googleMap {
     width:100%;
     height:400px;
 }
@@ -166,6 +166,57 @@ form, dd {
     background: #EDFFE6;
 }
 
-#chat, #painter, #controls {
-    display: inline;
+
+
+
+
+
+
+
+
+
+/*Game's canvases*/
+#game {
+    width: 800px;
+    height: 400px;
+    background: white;
+    position: relative;
+    left: 4%;
+}
+/*Painter*/
+#viewport {
+    /*width: 800px;*/
+    /*height: 400px;*/
+    /*background: white;*/
+    /*position: relative;*/
+    /*left: 4%;*/
+}
+
+canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+#positions {
+    z-index: 2;
+}
+#me {
+    z-index: 2;
+}
+#draws {
+    z-index: 2;
+}
+#controls {
+    z-index: 4;
+}
+
+/*Chat*/
+#chat {
+    /*display: inline-block;*/
+}
+#chat_window {
+    z-index: 4;
+    /*top: 1%;*/
+    left: 500px;
 }
