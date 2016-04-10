@@ -11,7 +11,6 @@ function statusChangeCallback(response) {
 		FB.api('/me', function(response) {
 			document.getElementById("name").value = response.name;
 //			document.getElementById("login_button").click(); <<<<<<< if fb log in success, take you to mode page automatically
-			document.getElementById("status").innerHTML = 'Logged in as ' + response.name;
 		});
 	} else if (response.status === 'not_authorized') {
 		// The person is logged into Facebook, but not your app.
