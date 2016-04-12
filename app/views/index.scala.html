@@ -1,68 +1,8 @@
 @(gamers: List[Gamer], gamerForm: Form[Gamer])
 @import helper._
 
-<!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <link type="text/css" rel="stylesheet" href='@routes.Assets.at("stylesheets/main_flexible.css")'>
-        <script src='@routes.Assets.at("javascripts/facebook.js")'></script>
-        <script src="https://apis.google.com/js/platform.js" async defer></script>
-        <script src='@routes.Assets.at("javascripts/google.js")'></script>
-        <meta name="google-signin-client_id" content=" 378299710386-a8ct99b1frlgeo76l6iokefackr3mbd6.apps.googleusercontent.com ">
-        <meta charset="UTF-8">
-        <title>Paint'n'Guess</title>
-    </head>
-    <body>
-    
-        <div id="big_wrapper">
-            <header id="top_header">
-                <h1>Welcome to Paint'n'Guess!</h1>
-            </header>
-            <nav id="top_menu">
-                <ul>
-                    <li>
-                        @form(routes.Application.addGamer()) {
-                            <label for="name">Username</label>
-                            <input type = "text" name="name" id="name" placeholder = "Username"/>
-                            <input type="submit" id="login_button" value="Log in">
-                        }
-                    </li>
-                    <li>
-                        <a href='@routes.Application.aboutUs()'>About us</a>
-                    </li>
-                    <li>
-                        <a href='@routes.Application.donate()'>Donate</a>
-                    </li>
-                </ul>
-                    <div id="social_login">
-                        <ul>
-                        	<li>
-                        		<div id="status"></div>
-                        	<li>
-                            <li>
-<!--            fb button	--> <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-									
-                            </li>
-                            <li>
-			<!--google button --><div class="g-signin2" data-onsuccess="onSignIn"></div> 
-                            </li>
-                            <li>
-                                <button>ID-card</button>
-                            </li>
-                        </ul>
-                    </div>
-            </nav>
-            <div id="main_div">
-                <section id="main_section">
-                    <article>
-                        <h2>Your advertisement could be here!</h2>
-                    </article>
-                </section>
-            </div>
-            <footer id="the_footer">
-                Paint'n'Guess team 2016
-                <p><a href='@routes.Application.aboutUs()'>About us</a></p>
-            </footer>
-        </div>
-    </body>
-</html>
+@main("Paint'n'Guess", "Welcome to Paint'n'Guess!") {
+    <article>
+        <h2>Your advertisement could be here!</h2>
+    </article>
+}

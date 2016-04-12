@@ -1,0 +1,61 @@
+@(logged: Boolean)
+@import helper._
+
+<nav id="top_menu">
+    @if(logged) {
+        <ul>
+            <li>
+                <a href='@routes.Application.index()'>Home page</a>
+            </li>
+            <li>
+                <a href='@routes.Application.aboutUs()'>About us</a>
+            </li>
+            <li>
+                <a href='@routes.Application.donate()'>Donate</a>
+            </li>
+            <li>
+                <a href='@routes.Application.mode()'>Quit game</a>
+            </li>
+        </ul>
+        <div id="social_login">
+            <ul>
+                <li>
+                    <form method="GET" action='@routes.Application.logout()'>
+                        <button>Log out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+    } else {
+        <ul>
+            <li>
+            @form(routes.Application.addGamer()) {
+                <label for="name">Username</label>
+                <input type = "text" name="name" id="name" placeholder = "Username"/>
+                <input type="submit" id="login_button" value="Log in">
+                }
+            </li>
+            <li>
+                <a href='@routes.Application.aboutUs()'>About us</a>
+            </li>
+            <li>
+                <a href='@routes.Application.donate()'>Donate</a>
+            </li>
+        </ul>
+        <div id="social_login">
+            <ul>
+                <li>
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
+                </li>
+                <li>
+                    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                </li>
+                <li>
+                    <button>ID-card</button>
+                </li>
+            </ul>
+        </div>
+    }
+
+
+</nav>

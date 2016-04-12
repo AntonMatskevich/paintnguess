@@ -1,61 +1,17 @@
-<!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <link type = "text/css" rel = "stylesheet" href = '@routes.Assets.at("stylesheets/main_flexible.css")'>
-        <meta charset = "UTF-8">
-        <title>Paint'n'Guess about us</title>
-    </head>
-    <body>
-        <div id="big_wrapper">
-            <header id="top_header">
-                <h1>About Paint'n'Guess team</h1>
-            </header>
-            <nav id="top_menu">
-                <ul>
-                    <li>
-                        <a href='@routes.Application.index()'>Home page</a>
-                    </li>
-                    <li>
-                        <a href='@routes.Application.aboutUs()'>About us</a>
-                    </li>
-                    <li>
-                        <a href='@routes.Application.donate()'>Donate</a>
-                    </li>
-                </ul>
-                    <div id="social_login">
-                        <ul>
-                            <li>
-                                <button>Facebook</button>
-                            </li>
-                            <li>
-                                <button>Google</button>
-                            </li>
-                            <li>
-                                <button>ID-card</button>
-                            </li>
-                        </ul>
-                    </div>
-            </nav>
-            <div id="main_div">
-                <section id="main_section">
-                    <h2>Hello!</h2>
-                    <p>
-					This is a <strong>prototype</strong> of a web application that will cause a big load
-                        of stress and sleepless nights to three students of University of Tartu.
-					</p>
-                    <p>
-					This text you see on thy screen is just a description of a faint
-                        shadow of what this application will become.
-                    </p>
-                    <p>
-					Hopefully, that is.
-                    </p>
-                </section>
-            </div>
-            <footer id="the_footer">
-                Paint'n'Guess team 2016
-                <p><a href='@routes.Application.aboutUs()'>About us</a></p>
-            </footer>
-        </div>
-    </body>
-</html>
+
+    @main("PnG about us", "About Paint'n'Guess team") {
+
+        <h2>Hello!</h2>
+        <p>
+            This is a <strong>prototype</strong> of a web application that will cause a big load
+            of stress and sleepless nights to three students of University of Tartu.
+        </p>
+        <p>
+            This text you see on thy screen is just a description of a faint
+            shadow of what this application will become.
+        </p>
+        <p>
+            Hopefully, that is.
+        </p>
+
+}
