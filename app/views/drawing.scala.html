@@ -39,26 +39,24 @@
 			</nav>
 			<div id="main_div">
 				<section id="main_section">
-					<article>
-						<h2>Choose room:</h2>
-						<label for="button1">Room1</label>
-						<input type="radio" id="button1" name="room" value="Room 1"> Room1<br>
-						<label for="button2">Room1</label>
-						<input type="radio" id="button2" name="room" value="Room 2"> Room2<br>
-						<label for="button3">Room1</label>
-						<input type="radio" id="button3" name="room" value="Room 3"> Room3<br>
-						<label for="button4">Room1</label>
-						<input type="radio" id="button4" name="room" value="Room 4"> Room4<br>
-					</article>
-
-					<article>
-						<h2>Choose team:</h2>
-						<label for="button5">Room1</label>
-						<input type="radio" id="button5" name="team" value="Team 1"> Team1<br>
-						<label for="button6">Room1</label>
-						<input type="radio" id="button6" name="team" value="Team 2"> Team2<br>
-						<label for="button7">Room1</label>
-						<input type="radio" id="button7" name="team" value="Team 3"> Team3<br>
+					<article  class="teams">
+					@teams.groupBy(_.room).map {
+						case (room, teams) => {
+								<header>
+									<h3>@room.name</h3>
+								</header>
+								<ul class="list">
+								@teams.map { team =>
+									<li data-task-id="@team.id">
+										<h4>@team.title</h4>
+										@if(team.memberOf != null && team.memberOf.playerName != null) {
+											<span class="memberOf">@team.memberOf.playerName</span>
+										}
+									</li>
+								}
+								</ul>
+						}
+					}
 					</article>
 					<form method="GET" id="specialButton" action='@routes.Application.drawingGame()'>
 						<button class="ready_button">Ready</button>

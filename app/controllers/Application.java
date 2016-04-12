@@ -1,10 +1,7 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Gamer;
-import models.PaintRoom;
-import models.Room;
-import models.Team;
+import models.*;
 import play.api.mvc.Session;
 import play.data.Form;
 import play.data.validation.ValidationError;
@@ -68,10 +65,25 @@ public class Application extends Controller {
             return redirect(routes.Application.mode());
         }
     }
+
+    //View gamers
+    public static Result getGamers(){
+        return ok(views.html.remove_gamer.render(Gamer.all(), gamerForm));
+    }
+
+    public static Result deleteGamer(Integer id) {
+
+        Gamer.delete(id);
+        return redirect(routes.Application.getGamers());
+    }
+
+
+
+    /////////////////////NEW LOGGING SYSTEM//////////////////////////////
     /////////////Authentication
     public static Result login() {
         return ok(
-                views.html.login.render(Form.form(Login.class))
+                views.html.login.render(Form.form(Login.class), Player.all(), playerForm)
         );
     }
 
@@ -86,41 +98,59 @@ public class Application extends Controller {
     public static Result authenticate() {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-            return badRequest(views.html.login.render(loginForm));
+            return badRequest(views.html.login.render(Form.form(Login.class), Player.all(), playerForm));
         } else {
             session().clear();
-            session("name", loginForm.get().name);
+            session("playerName", loginForm.get().playerName);
             return redirect(
                     routes.Application.mode()
             );
         }
     }
-
-    //View gamers
-    public static Result getGamers(){
-        return ok(views.html.remove_gamer.render(Gamer.all(), gamerForm));
-    }
-
-    public static Result deleteGamer(Integer id) {
-
-        Gamer.delete(id);
-        return redirect(routes.Application.getGamers());
-    }
-
     public static class Login {
 
-        public String name;
+        public String playerName;
+        public String password;
 
         public String validate() {
-            if (Gamer.authenticate(name) == null) {
-                return "Invalid username";
+            if (Player.authenticate(playerName,password) == null) {
+                return "Invalid username or password";
             }
             return null;
         }
 
     }
+    /////////////////register or delete or view players
+    static Form<Player> playerForm = Form.form(Player.class);
 
-    //////////////PAINTER
+    public static Result addPlayer(){
+        Form<Player> filledForm = playerForm.bindFromRequest();
+        if (filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.login.render(Form.form(Login.class), Player.all(), filledForm)
+            );
+        } else {
+            Player.create(filledForm.get());
+            return redirect(routes.Application.login());
+        }
+    }
+
+    //View players
+    public static Result getPlayers(){
+        return ok(views.html.remove_player.render(Player.all(), playerForm));
+    }
+
+//    public static Result deletePlayer(Integer id) {
+//        Gamer.delete(id);
+//        return redirect(routes.Application.getGamers());
+//    }
+
+
+
+
+
+
+    ////////////////////////////////////////////////////PAINTER
     static PaintRoom env = new PaintRoom("Public");
 
     public static Result painter() {

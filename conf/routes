@@ -21,6 +21,8 @@ GET     /logout                     controllers.Application.logout()
 # Login
 GET     /remove                     controllers.Application.getGamers()
 POST    /                           controllers.Application.addGamer()
+GET     /players                    controllers.Application.getPlayers()
+POST    /login                      controllers.Application.addPlayer()
 POST    /remove/:id/delete          controllers.Application.deleteGamer(id: Integer)
 
 # Painter

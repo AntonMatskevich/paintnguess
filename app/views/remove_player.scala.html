@@ -1,0 +1,19 @@
+@(players: List[Player], playerForm: Form[Player])
+
+@import helper._
+
+@main("Todo list", "Blah") {
+
+    <h1>@players.size() player(s)</h1>
+
+    <ul>
+    @for(player <- players) {
+        <li>
+            @player.playerName
+
+
+        </li>
+    }
+    </ul>
+
+}
