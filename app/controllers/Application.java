@@ -3,6 +3,8 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Gamer;
 import models.PaintRoom;
+import models.Room;
+import models.Team;
 import play.api.mvc.Session;
 import play.data.Form;
 import play.data.validation.ValidationError;
@@ -40,7 +42,7 @@ public class Application extends Controller {
 
     @Security.Authenticated(Secured.class)
     public static Result drawing() {
-        return ok(views.html.drawing.render());
+        return ok(views.html.drawing.render(Room.find.all(), Team.find.all()));
     }
 
     @Security.Authenticated(Secured.class)

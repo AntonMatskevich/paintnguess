@@ -21,6 +21,12 @@ create table room (
   constraint pk_room primary key (id))
 ;
 
+create table team (
+  id                        bigint not null,
+  title                     varchar(255),
+  constraint pk_team primary key (id))
+;
+
 
 create table room_player (
   room_id                        bigint not null,
@@ -32,6 +38,8 @@ create sequence gamer_seq;
 create sequence player_seq;
 
 create sequence room_seq;
+
+create sequence team_seq;
 
 
 
@@ -52,6 +60,8 @@ drop table if exists room;
 
 drop table if exists room_player;
 
+drop table if exists team;
+
 SET REFERENTIAL_INTEGRITY TRUE;
 
 drop sequence if exists gamer_seq;
@@ -59,4 +69,6 @@ drop sequence if exists gamer_seq;
 drop sequence if exists player_seq;
 
 drop sequence if exists room_seq;
+
+drop sequence if exists team_seq;
 
