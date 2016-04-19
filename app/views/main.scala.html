@@ -6,9 +6,27 @@
     <head>
         <title>@title</title>
         <link rel="shortcut icon" type="image/png" href="@routes.Assets.at("images/favicon.png")">
-        <script src="@routes.Assets.at("javascripts/jquery-2.2.0.min.js")" type="text/javascript"></script>
+        <link type="text/css" rel="stylesheet" href='@routes.Assets.at("stylesheets/main_flexible.css")'>
+        <script src='@routes.Assets.at("javascripts/facebook.js")'></script>
+        <script src="https://apis.google.com/js/platform.js" async defer></script>
+        <script src='@routes.Assets.at("javascripts/google.js")'></script>
+        <meta name="google-signin-scope" content="profile email">
+        <meta name="google-signin-client_id" content="378299710386-a8ct99b1frlgeo76l6iokefackr3mbd6.apps.googleusercontent.com">
     </head>
     <body>
-        @content
+        <div id="big_wrapper">
+            <header id="top_header">
+                <h1>@title</h1>
+            </header>
+            @top_menu()
+            <div id="main_div">
+                @content
+            </div>
+            <footer id="the_footer">
+                Paint'n'Guess team 2016
+                <p><a href='@routes.Application.aboutUs()'>About us</a></p>
+                    <a href="#" onclick="signOut();">Google sign out</a>
+            </footer>
+        </div>
     </body>
 </html>

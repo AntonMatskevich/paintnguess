@@ -1,74 +1,29 @@
-<!DOCTYPE html>
-<html lang = "en">
-    <head>
-        <link type = "text/css" rel = "stylesheet" href = @routes.Assets.at("stylesheets/main_flexible.css")>
-        <meta charset = "UTF-8">
-        <title>Paint'n'Guess draw mode</title>
-    </head>
-    <body>
-		<div id="big_wrapper">
-			<header id="top_header">
-				<h1>With whom do you want to play?</h1>
-			</header>
-			<nav id="top_menu">
-				<ul>
-					<li>
-						<a href='@routes.Application.index()'>Home page</a>
-					</li>
-					<li>
-						<a href='@routes.Application.aboutUs()'>About us</a>
-					</li>
-					<li>
-						<a href='@routes.Application.donate()'>Donate</a>
-					</li>
-					<li>
-						<a href='@routes.Application.mode()'>Quit game</a>
-					</li>
-				</ul>
-				<div id="social_login">
-					<ul>
-						<li>
-							<form method="GET" action='@routes.Application.logout()'>
-								<button>Log out</button>
-							</form>
-						</li>
-					</ul>
-				</div>
-			</nav>
-			<div id="main_div">
-				<section id="main_section">
-					<article>
-						<h2>Choose room:</h2>
-						<label for="button1">Room1</label>
-						<input type="radio" id="button1" name="room" value="Room 1"> Room1<br>
-						<label for="button2">Room1</label>
-						<input type="radio" id="button2" name="room" value="Room 2"> Room2<br>
-						<label for="button3">Room1</label>
-						<input type="radio" id="button3" name="room" value="Room 3"> Room3<br>
-						<label for="button4">Room1</label>
-						<input type="radio" id="button4" name="room" value="Room 4"> Room4<br>
-					</article>
 
-					<article>
-						<h2>Choose team:</h2>
-						<label for="button5">Room1</label>
-						<input type="radio" id="button5" name="team" value="Team 1"> Team1<br>
-						<label for="button6">Room1</label>
-						<input type="radio" id="button6" name="team" value="Team 2"> Team2<br>
-						<label for="button7">Room1</label>
-						<input type="radio" id="button7" name="team" value="Team 3"> Team3<br>
-					</article>
-					<form method="GET" id="specialButton" action='@routes.Application.drawingGame()'>
-						<button class="ready_button">Ready</button>
-					</form>
-				</section>
-			</div>
+@main("Paint'n'Guess draw mode"){
+	<section id="main_section">
+		<article>
+			<h2>Choose room:</h2>
+			<label for="button1">Room1</label>
+			<input type="radio" id="button1" name="room" value="Room 1"> Room1<br>
+			<label for="button2">Room1</label>
+			<input type="radio" id="button2" name="room" value="Room 2"> Room2<br>
+			<label for="button3">Room1</label>
+			<input type="radio" id="button3" name="room" value="Room 3"> Room3<br>
+			<label for="button4">Room1</label>
+			<input type="radio" id="button4" name="room" value="Room 4"> Room4<br>
+		</article>
 
-
-			<footer id="the_footer">
-                Paint'n'Guess team 2016
-				<p><a href='@routes.Application.aboutUs()'>About us</a></p>
-			</footer>
-		</div>
-    </body>
-</html>
+		<article>
+			<h2>Choose team:</h2>
+			<label for="button5">Room1</label>
+			<input type="radio" id="button5" name="team" value="Team 1"> Team1<br>
+			<label for="button6">Room1</label>
+			<input type="radio" id="button6" name="team" value="Team 2"> Team2<br>
+			<label for="button7">Room1</label>
+			<input type="radio" id="button7" name="team" value="Team 3"> Team3<br>
+		</article>
+		<form method="GET" id="specialButton" action='@routes.Application.drawingGame()'>
+			<button class="ready_button">Ready</button>
+		</form>
+	</section>
+}
