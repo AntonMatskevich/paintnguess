@@ -2,11 +2,7 @@
 <nav id="top_menu">
     <ul>
         <li>
-        @helper.form(routes.Application.addGamer()) {
-            <label for="name">Username</label>
-            <input type = "text" name="name" id="name" placeholder = "Username"/>
-            <input type="submit" id="login_button" value="Log in">
-            }
+            <a href='@routes.Application.login()'>Log in</a>
         </li>
         <li>
             <a href='@routes.Application.aboutUs()'>About us</a>

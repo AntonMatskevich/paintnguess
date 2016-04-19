@@ -3,6 +3,7 @@ package controllers;
 import com.fasterxml.jackson.databind.JsonNode;
 import models.Gamer;
 import models.PaintRoom;
+import models.Player;
 import play.api.mvc.Session;
 import play.data.Form;
 import play.data.validation.ValidationError;
@@ -47,10 +48,6 @@ public class Application extends Controller {
     public static Result drawingGame() {
         return ok(views.html.drawing_game.render());
     }
-//<<<<<<< HEAD
-//=======
-
-//>>>>>>> 21ee81d7429e0ce1606a25dfc56b5e0b3cd4c7ff
     
 //    public static Result removeGamer() {
 //        return redirect(routes.Application.getGamers());
@@ -73,7 +70,7 @@ public class Application extends Controller {
     /////////////Authentication
     public static Result login() {
         return ok(
-                views.html.login.render(Form.form(Login.class))
+                views.html.login.render(Player.all(),Form.form(Login.class))
         );
     }
 
@@ -88,7 +85,7 @@ public class Application extends Controller {
     public static Result authenticate() {
         Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
         if (loginForm.hasErrors()) {
-            return badRequest(views.html.login.render(loginForm));
+            return badRequest(views.html.login.render(Player.all(),loginForm));
         } else {
             session().clear();
             session("name", loginForm.get().name);
@@ -104,7 +101,6 @@ public class Application extends Controller {
     }
 
     public static Result deleteGamer(Integer id) {
-
         Gamer.delete(id);
         return redirect(routes.Application.getGamers());
     }
@@ -112,10 +108,11 @@ public class Application extends Controller {
     public static class Login {
 
         public String name;
+        public String password;
 
         public String validate() {
-            if (Gamer.authenticate(name) == null) {
-                return "Invalid username";
+            if (Player.authenticate(name, password) == null) {
+                return "Invalid username or password";
             }
             return null;
         }
@@ -142,6 +139,21 @@ public class Application extends Controller {
             }
         };
 
+    }
+
+    //////////////////////////the newest
+    static Form<Player> playerForm = Form.form(Player.class);
+
+    public static Result addPlayer() {
+        Form<Player> filledForm = playerForm.bindFromRequest();
+        if (filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.login.render(Player.all(), filledForm)
+            );
+        } else {
+            Player.create(filledForm.get());
+            return redirect(routes.Application.login());
+        }
     }
 
 }

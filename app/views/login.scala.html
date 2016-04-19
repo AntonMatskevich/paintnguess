@@ -1,4 +1,4 @@
-@(form: Form[Application.Login])
+@(player: List[Player], form: Form[Application.Login])
 
 @main("Log in Paint'n'Guess"){
     <section id="main_section">
@@ -14,9 +14,26 @@
                     <input type="name" name="name" placeholder="Username" value="@form("name").value">
                 </p>
                 <p>
+                    <input type="password" name="password" placeholder="Password">
+                </p>
+                <p>
                     <button type="submit">Login</button>
                 </p>
             }
+        </article>
+        <article>
+        @helper.form(routes.Application.addPlayer()) {
+            <h1>Register</h1>
+            <p>
+                <input type="name" name="name" placeholder="Username" value="@form("name").value">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit">Register</button>
+            </p>
+        }
         </article>
     </section>
 }
