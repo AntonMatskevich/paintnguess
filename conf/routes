@@ -4,30 +4,6 @@
 
 #HTML pages
 GET     /                           controllers.Application.index()
-GET     /mode                       controllers.Application.mode()
-GET     /aboutus                    controllers.Application.aboutUs()
-GET     /card                       controllers.Application.card()
-GET     /donate                     controllers.Application.donate()
-GET     /drawing                    controllers.Application.drawing()
-GET     /drawing_game               controllers.Application.drawingGame()
-#GET     /signup                     controllers.Application.signup()
-
-#Authentication
-GET     /login                      controllers.Application.login()
-POST    /login                      controllers.Application.authenticate()
-GET     /logout                     controllers.Application.logout()
-
-#Register
-POST    /login                      controllers.Application.addPlayer()
-
-# Login
-GET     /remove                     controllers.Application.getGamers()
-POST    /                           controllers.Application.addGamer()
-POST    /remove/:id/delete          controllers.Application.deleteGamer(id: Integer)
-
-# Painter
-GET     /painter                    controllers.Application.painter()
-GET     /stream                     controllers.Application.stream()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)

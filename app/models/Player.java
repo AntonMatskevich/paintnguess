@@ -1,39 +1,29 @@
 package models;
 
-import javax.persistence.*;
-import play.db.ebean.*;
-import com.avaje.ebean.*;
 
-import java.util.List;
+import play.db.ebean.Model;
+
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+/**
+ * Created by Anton on 19.04.16.
+ */
 
 @Entity
 public class Player extends Model {
 
     @Id
     public String name;
+    public String email;
     public String password;
 
-    public Player(String name, String password) {
+    public Player(String name, String email, String password) {
         this.name = name;
+        this.email = email;
         this.password = password;
     }
 
-    public static Finder<String,Player> find = new Finder<String,Player>(
-            String.class, Player.class
-    );
+    public static Finder<String, Player> find = new Finder<String, Player>(String.class, Player.class);
 
-    public static List<Player> all() {
-        return find.all();
-    }
-
-    public static Player create(String name, String password) {
-        Player player = new Player(name, password);
-        player.save();
-        return player;
-    }
-
-    public static Player authenticate(String name, String password) {
-        return find.where().eq("name", name)
-                .eq("password", password).findUnique();
-    }
 }
