@@ -25,10 +25,14 @@ public class Team extends Model {
         return find.fetch("room").where().eq("room.members.name", player).findList();
     }
 
-    public static Team create(Team team, Long room) {
-        team.room = Room.find.ref(room);
+    public static Team create(Team team/*, Long room*/) {
+//        team.room = Room.find.ref(room);
         team.save();
         return team;
+    }
+
+    public static void delete(Long id) {
+        find.ref(id).delete();
     }
 
 }

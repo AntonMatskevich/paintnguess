@@ -26,4 +26,9 @@ public class Player extends Model {
 
     public static Finder<String, Player> find = new Finder<String, Player>(String.class, Player.class);
 
+    public static Player authenticate(String name, String password) {
+        return find.where().eq("name", name)
+                .eq("password", password).findUnique();
+    }
+
 }

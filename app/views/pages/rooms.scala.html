@@ -1,0 +1,33 @@
+@(rooms: List[Room], teams: List[Team], teamForm: Form[Team])
+
+@templates.main("Choose playing room") {
+
+    <article  class="teams">
+        <h1>Rooms' dashboard</h1>
+        <h2>Teams over all rooms</h2>
+        <h1>@teams.size() team(s)</h1>
+
+        <ul>
+        @for(team <- teams) {
+            <li>
+                @team.title
+
+                @helper.form(routes.Application.deleteTeam(team.id)) {
+                    <input type="submit" value="Delete">
+                    }
+            </li>
+        }
+        </ul>
+
+        <h2>Add a new team</h2>
+
+        @helper.form(routes.Application.newTeam()) {
+
+            @helper.inputText(teamForm("title"))
+
+            <input type="submit" value="Create">
+
+            }
+    </article>
+
+}
