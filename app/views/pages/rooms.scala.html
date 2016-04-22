@@ -1,9 +1,35 @@
-@(rooms: List[Room], teams: List[Team], teamForm: Form[Team])
+@(rooms: List[Room], teams: List[Team], teamForm: Form[Team], roomForm: Form[Room])
 
 @templates.main("Choose playing room") {
 
-    <article  class="teams">
+    <article  class="rooms">
         <h1>Rooms' dashboard</h1>
+        <h1>@rooms.size() room(s)</h1>
+
+        <ul>
+        @for(room <- rooms) {
+            <li>
+                @room.name
+            </li>
+        }
+        </ul>
+
+        <h2>Add a new room</h2>
+        @helper.form(routes.Application.newRoom()) {
+            @if(flash.contains("error")) {
+                <p class="error">
+                @flash.get("error")
+                </p>
+            }
+
+            @helper.inputText(teamForm("name"))
+
+            <input type="submit" value="Create">
+
+            }
+    </article>
+
+    <article  class="teams">
         <h2>Teams over all rooms</h2>
         <h1>@teams.size() team(s)</h1>
 
@@ -11,10 +37,6 @@
         @for(team <- teams) {
             <li>
                 @team.title
-
-                @helper.form(routes.Application.deleteTeam(team.id)) {
-                    <input type="submit" value="Delete">
-                    }
             </li>
         }
         </ul>
@@ -22,6 +44,11 @@
         <h2>Add a new team</h2>
 
         @helper.form(routes.Application.newTeam()) {
+            @if(flash.contains("error")) {
+                <p class="error">
+                @flash.get("error")
+                </p>
+            }
 
             @helper.inputText(teamForm("title"))
 

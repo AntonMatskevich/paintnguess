@@ -1,5 +1,6 @@
 package models;
 
+import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.CascadeType;
@@ -15,6 +16,7 @@ public class Room extends Model {
 
     @Id
     public Long id;
+    @Constraints.Required
     public String name;
     @OneToOne(cascade = CascadeType.REMOVE)
     public List<Player> members = new ArrayList<Player>();
@@ -26,12 +28,20 @@ public class Room extends Model {
 
     public static Model.Finder<Long, Room> find = new Model.Finder<Long, Room>(Long.class, Room.class);
 
-    public static Room create(String name, String owner) {
-        Room room = new Room(name, Player.find.ref(owner));
+    public static Room create(String name, String ownerId) {
+        Room room = new Room(name, Player.find.ref(ownerId));
         room.save();
         return room;
     }
 
+    public static Room create(Room room) {
+        room.save();
+        return room;
+    }
+
+    public static void delete(Long id) {
+        find.ref(id).delete();
+    }
 
 
     public static List<Room> findInvolving(String player) {

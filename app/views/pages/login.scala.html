@@ -1,4 +1,4 @@
-@(form: Form[Application.Login])
+@(form: Form[Application.Login], players: List[Player], playerForm: Form[Player])
 
 @templates.main("Log in Paint'n'Guess"){
     <section id="main_section">
@@ -25,6 +25,42 @@
                 <button type="submit">Login</button>
             </p>
         }
+        </article>
+        <article>
+        @helper.form(routes.Application.newPlayer()) {
+            <h1>Registration</h1>
+            @if(form.hasGlobalErrors) {
+                <p class="error">
+                @form.globalError.message
+                </p>
+            }
+            <p>
+                <input type="name" name="name" placeholder="Name" value="@form("name").value">
+            </p>
+            <p>
+                <input type="password" name="password" placeholder="Password">
+            </p>
+            <p>
+                <button type="submit">Sign up</button>
+            </p>
+        }
+        </article>
+
+        <article  class="players">
+            <h2>Players</h2>
+            <h1>@players.size() player(s)</h1>
+
+            <ul>
+            @for(player <- players) {
+                <li>
+                    @player.id: @player.name
+
+                    @helper.form(routes.Application.deletePlayer(player.id)) {
+                        <input type="submit" value="Delete">
+                        }
+                </li>
+            }
+            </ul>
         </article>
     </section>
 }

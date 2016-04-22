@@ -5,7 +5,7 @@
 
 create table player (
   name                      varchar(255) not null,
-  email                     varchar(255),
+  id                        bigint,
   password                  varchar(255),
   constraint pk_player primary key (name))
 ;

@@ -12,11 +12,23 @@ GET     /draw                       controllers.Application.draw()
 #Login stuff
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
+GET     /player                     controllers.Application.login()
+POST    /player                     controllers.Application.newPlayer()
+POST    /player/:id/delete          controllers.Application.deletePlayer(id: Long)
 
 #Rooms' and teams' stuff
-GET     /teams                  controllers.Application.rooms()
-POST    /teams                  controllers.Application.newTeam()
-POST    /teams/:id/delete       controllers.Application.deleteTeam(id: Long)
+GET     /team                       controllers.Application.rooms()
+POST    /team                       controllers.Application.newTeam()
+POST    /team/:id/delete            controllers.Application.deleteTeam(id: Long)
+GET     /room                       controllers.Application.rooms()
+POST    /room                       controllers.Application.newRoom()
+POST    /room/:id/delete            controllers.Application.deleteRoom(id: Long)
+
+#Administrative page
+GET     /admin                      controllers.Application.admin()
+POST    /player/:id/delete          controllers.Application.deletePlayer(id: Long)
+POST    /room/:id/delete            controllers.Application.deleteRoom(id: Long)
+POST    /team/:id/delete            controllers.Application.deleteTeam(id: Long)
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
