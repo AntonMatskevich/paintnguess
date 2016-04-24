@@ -45,22 +45,5 @@
             </p>
         }
         </article>
-
-        <article  class="players">
-            <h2>Players</h2>
-            <h1>@players.size() player(s)</h1>
-
-            <ul>
-            @for(player <- players) {
-                <li>
-                    @player.id: @player.name
-
-                    @helper.form(routes.Application.deletePlayer(player.id)) {
-                        <input type="submit" value="Delete">
-                        }
-                </li>
-            }
-            </ul>
-        </article>
     </section>
 }

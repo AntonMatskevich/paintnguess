@@ -39,12 +39,12 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result admin() {
         String playerName = Player.find.byId(request().username()).name;
-        if (playerName.equals("admin")) {
+        if (!playerName.equals("admin")) {
+            return redirect(routes.Application.login());
+        } else {
             return ok(views.html.pages.admin.render(Player.find.all(),
                     Room.find.all(),
                     Team.find.all()));
-        } else {
-            return redirect(routes.Application.login());
         }
     }
 
@@ -81,7 +81,7 @@ public class Application extends Controller {
             session().clear();
             session("name", loginForm.get().name);
             return redirect(
-                    routes.Application.index()
+                    routes.Application.rooms()
             );
         }
     }
