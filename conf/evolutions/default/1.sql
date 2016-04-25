@@ -17,11 +17,10 @@ create table room (
 ;
 
 create table team (
-  id                        bigint not null,
-  title                     varchar(255),
-  member_of_name            varchar(255),
-  room_id                   bigint,
-  constraint pk_team primary key (id))
+  title                     varchar(255) not null,
+  id                        bigint,
+  room                      bigint,
+  constraint pk_team primary key (title))
 ;
 
 create sequence player_seq;
@@ -30,10 +29,6 @@ create sequence room_seq;
 
 create sequence team_seq;
 
-alter table team add constraint fk_team_memberOf_1 foreign key (member_of_name) references player (name) on delete restrict on update restrict;
-create index ix_team_memberOf_1 on team (member_of_name);
-alter table team add constraint fk_team_room_2 foreign key (room_id) references room (id) on delete restrict on update restrict;
-create index ix_team_room_2 on team (room_id);
 
 
 

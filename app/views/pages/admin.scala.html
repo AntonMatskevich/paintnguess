@@ -1,10 +1,10 @@
-@(players: List[Player], rooms: List[Room], teams: List[Team])
+@(players: List[Player], player: Player)
 
-@templates.main("Paint'n'Guess admin") {
+@templates.main("Paint'n'Guess admin", player) {
 
     <article  class="players">
         <h2>Players</h2>
-        <h1>@players.size() player(s)</h1>
+        <h2>@players.size() player(s)</h2>
 
         <ul>
         @for(player <- players) {
@@ -12,40 +12,6 @@
                 @player.id: @player.name
 
                 @helper.form(routes.Application.deletePlayer(player.id)) {
-                    <input type="submit" value="Delete">
-                    }
-            </li>
-        }
-        </ul>
-    </article>
-
-    <article  class="rooms">
-        <h1>Rooms' dashboard</h1>
-        <h1>@rooms.size() room(s)</h1>
-
-        <ul>
-        @for(room <- rooms) {
-            <li>
-                @room.name
-
-                @helper.form(routes.Application.deleteRoom(room.id)) {
-                    <input type="submit" value="Delete">
-                    }
-            </li>
-        }
-        </ul>
-    </article>
-
-    <article  class="teams">
-        <h2>Teams over all rooms</h2>
-        <h1>@teams.size() team(s)</h1>
-
-        <ul>
-        @for(team <- teams) {
-            <li>
-                @team.title
-
-                @helper.form(routes.Application.deleteTeam(team.id)) {
                     <input type="submit" value="Delete">
                     }
             </li>

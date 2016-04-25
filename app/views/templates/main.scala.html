@@ -1,4 +1,4 @@
-@(title: String)(content: Html)
+@(title: String, player: Player)(content: Html)
 <!DOCTYPE html>
 
 <html>
@@ -17,7 +17,7 @@
             <header id="top_header">
                 <h1>@title</h1>
             </header>
-            @templates.menu()
+            @templates.menu(player)
             <div id="main_div">
             @content
             </div>

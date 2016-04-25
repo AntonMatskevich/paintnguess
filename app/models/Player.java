@@ -20,6 +20,8 @@ public class Player extends Model {
     public Long id;
     public String password;
 
+    public static Long idCounter = Long.valueOf(0);
+
     public Player(String name, String password) {
         this.name = name;
         this.password = password;
@@ -34,7 +36,7 @@ public class Player extends Model {
 
 
     public static Player create(Player player) {
-            player.id = new Long(find.all().size() + 1);
+            player.id = idCounter++;
             player.save();
             return player;
     }

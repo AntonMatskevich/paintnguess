@@ -8,22 +8,21 @@ import play.mvc.*;
 public class Application extends Controller {
 
     public static Result index() {
-        return ok(views.html.pages.index.render("Hallo world!"));
+        return ok(views.html.pages.index.render());
     }
 
     @Security.Authenticated(Secured.class)
     public static Result rooms() {
         return ok(views.html.pages.rooms.render(
-                Room.find.all(),
-                Team.find.all(),
-                teamForm,
-                roomForm
+                Player.find.byId(request().username())
         ));
     }
 
     @Security.Authenticated(Secured.class)
     public static Result draw() {
-        return ok(views.html.pages.draw.render());
+        return ok(views.html.pages.draw.render(
+                Player.find.byId(request().username())
+        ));
     }
 
     public static Result about() {
@@ -31,9 +30,11 @@ public class Application extends Controller {
     }
 
     public static Result login() {
-        return ok(views.html.pages.login.render(Form.form(Login.class),
+        return ok(views.html.pages.login.render(
+                Form.form(Login.class),
                 Player.find.all(),
-                playerForm));
+                playerForm
+        ));
     }
 
     @Security.Authenticated(Secured.class)
@@ -42,9 +43,10 @@ public class Application extends Controller {
         if (!playerName.equals("admin")) {
             return redirect(routes.Application.login());
         } else {
-            return ok(views.html.pages.admin.render(Player.find.all(),
-                    Room.find.all(),
-                    Team.find.all()));
+            return ok(views.html.pages.admin.render(
+                    Player.find.all(),
+                    Player.find.byId(request().username())
+            ));
         }
     }
 
@@ -76,7 +78,8 @@ public class Application extends Controller {
         if (loginForm.hasErrors()) {
             return badRequest(views.html.pages.login.render(loginForm,
                     Player.find.all(),
-                    playerForm));
+                    playerForm
+            ));
         } else {
             session().clear();
             session("name", loginForm.get().name);
@@ -94,8 +97,8 @@ public class Application extends Controller {
             return badRequest(
                     views.html.pages.login.render(Form.form(Login.class),
                             Player.find.all(),
-                            playerForm)
-            );
+                            playerForm
+                    ));
         } else {
             Player.create(filledForm.get());
             return redirect(routes.Application.login());
@@ -106,7 +109,7 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result deletePlayer(Long id) {
         Player.delete(id);
-        return redirect(routes.Application.login());
+        return redirect(routes.Application.admin());
     }
 
     //room making
@@ -118,19 +121,17 @@ public class Application extends Controller {
             Form<Room> filledForm = roomForm.bindFromRequest();
             if (filledForm.hasErrors()) {
                 return badRequest(
-                        views.html.pages.rooms.render(Room.find.all(),
-                                Team.find.all(),
-                                teamForm,
-                                roomForm)
-                );
+                        views.html.pages.rooms.render(
+                                Player.find.byId(request().username())
+                        ));
             } else {
                 Room.create(filledForm.get());
                 return redirect(routes.Application.rooms());
             }
         } else {
-            flash("error", "There is too many rooms");
+            flash("room_error", "There is too many rooms");
             return redirect(
-                    routes.Application.rooms()
+                    routes.Application.admin()
             );
         }
     }
@@ -146,17 +147,15 @@ public class Application extends Controller {
     static Form<Team> teamForm = Form.form(Team.class);
 
     @Security.Authenticated(Secured.class)
-    public static Result newTeam() {
+    public static Result newTeam(Long id) {
         Form<Team> filledForm = teamForm.bindFromRequest();
         if(filledForm.hasErrors()) {
             return badRequest(
-                    views.html.pages.rooms.render(Room.find.all(),
-                            Team.find.all(),
-                            teamForm,
-                            roomForm)
-            );
+                    views.html.pages.rooms.render(
+                            Player.find.byId(request().username())
+                    ));
         } else {
-            Team.create(filledForm.get());
+            Team.create(filledForm.get(), id);
             return redirect(routes.Application.rooms());
         }
     }

@@ -18,7 +18,7 @@ POST    /player/:id/delete          controllers.Application.deletePlayer(id: Lon
 
 #Rooms' and teams' stuff
 GET     /team                       controllers.Application.rooms()
-POST    /team                       controllers.Application.newTeam()
+POST    /team                       controllers.Application.newTeam(id: Long)
 POST    /team/:id/delete            controllers.Application.deleteTeam(id: Long)
 GET     /room                       controllers.Application.rooms()
 POST    /room                       controllers.Application.newRoom()

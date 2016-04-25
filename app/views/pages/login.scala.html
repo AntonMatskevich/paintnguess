@@ -1,6 +1,6 @@
 @(form: Form[Application.Login], players: List[Player], playerForm: Form[Player])
 
-@templates.main("Log in Paint'n'Guess"){
+@templates.simple_main("Log in Paint'n'Guess"){
     <section id="main_section">
         <article>
         @helper.form(routes.Application.authenticate) {

@@ -1,3 +1,5 @@
+@(player: Player)
+
 <nav id="top_menu">
     <ul>
         <li>
@@ -16,10 +18,7 @@
     <div id="social_login">
         <ul>
             <li>
-                player.name
-            </li>
-            <li>
-                <button href="@routes.Application.logout()">Logout</button>
+                <a href='@routes.Application.logout()'>Logout ( @player.name )</a>
             </li>
             <li>
                     <!--fb button	--> <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
