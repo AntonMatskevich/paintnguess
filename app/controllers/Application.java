@@ -119,7 +119,7 @@ public class Application extends Controller {
             @Override
             public void onReady(In<JsonNode> in, Out<JsonNode> out) {
                 try{
-                    room.createPlayer(in, out);
+                    room.createPainter(in, out);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }

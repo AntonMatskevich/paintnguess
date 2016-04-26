@@ -4,6 +4,7 @@ import play.data.validation.Constraints;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
+import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -25,7 +26,7 @@ public class Room extends Model {
     public Long id;
     @Constraints.Required
     public String name;
-    public Map<Integer, Player> players = new ConcurrentHashMap<Integer, Player>();
+    public Map<Integer, Painter> painters = new ConcurrentHashMap<Integer, Painter>();
     public AtomicInteger counter = new AtomicInteger(0);
     public AtomicInteger connections = new AtomicInteger(0);
 
@@ -45,38 +46,38 @@ public class Room extends Model {
     }
 
 
-    public void createPlayer(final WebSocket.In<JsonNode> in, final WebSocket.Out<JsonNode> out) {
+    public void createPainter(final WebSocket.In<JsonNode> in, final WebSocket.Out<JsonNode> out) {
         counter.incrementAndGet();
         connections.incrementAndGet();
-        final int pid = counter.intValue(); // the player's id
+        final int pid = counter.intValue(); // the painter id
 
-        // in: handle messages from the player
+        // in: handle messages from the painter
         in.onMessage(new F.Callback<JsonNode>() {
             @Override
             public void invoke(JsonNode json) throws Throwable {
                 String type = json.get("type").textValue();
 
-                // The player wants to change some of his property
+                // The painter wants to change some of his property
                 if("change".equals(type)) {
-                    Player player = players.get(pid);
-                    if(player == null) {
-                        player = new Player(out);
-                        players.put(pid, player);
+                    Painter painter = painters.get(pid);
+                    if(painter == null) {
+                        painter = new Painter(out);
+                        painters.put(pid, painter);
 
-                        // Inform the player who he is (which pid, he can them identify himself)
+                        // Inform the painter who he is (which pid, he can them identify himself)
                         ObjectNode self = Json.newObject();
                         self.put("type", "youAre");
                         self.put("pid", pid);
-                        player.channel.write(self);
+                        painter.channel.write(self);
 
-                        // Inform the list of other players
-                        for(Map.Entry<Integer, Player> entry : players.entrySet()) {
+                        // Inform the list of other painters
+                        for(Map.Entry<Integer, Painter> entry : painters.entrySet()) {
                             ObjectNode other = (ObjectNode)entry.getValue().toJson();
                             other.put("pid", entry.getKey());
-                            player.channel.write(other);
+                            painter.channel.write(other);
                         }
                     }
-                    player.updateFromJson(json);
+                    painter.updateFromJson(json);
                 }
 
                 ObjectNode node = ((ObjectNode)json);
@@ -85,11 +86,11 @@ public class Room extends Model {
             }
         });
 
-        // Player has disconnected.
+        // User has disconnected.
         in.onClose(new F.Callback0() {
             @Override
             public void invoke() throws Throwable {
-                players.remove(pid);
+                painters.remove(pid);
                 connections.decrementAndGet();
 
                 ObjectNode json = Json.newObject();
@@ -99,17 +100,17 @@ public class Room extends Model {
                 Room.this.notifyAll(json);
 
                 Logger.debug("(pid:"+pid+") disconnected.");
-                Logger.info(connections+" player(s) currently connected.");
+                Logger.info(connections+" painter(s) currently connected.");
             }
         });
 
         Logger.debug("(pid:"+pid+") connected.");
-        Logger.info(connections+" player(s) currently connected.");
+        Logger.info(connections+" painter(s) currently connected.");
     }
 
     public void notifyAll(JsonNode json) {
-        for(Player player : players.values()) {
-            player.channel.write(json);
+        for(Painter painter : painters.values()) {
+            painter.channel.write(json);
         }
     }
 
