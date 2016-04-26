@@ -111,4 +111,20 @@ public class Application extends Controller {
         return redirect(routes.Application.admin());
     }
 
+    ////////Painter
+    static Room room = new Room("Room #1");
+
+    public static WebSocket<JsonNode> stream() {
+        return new WebSocket<JsonNode>() {
+            @Override
+            public void onReady(In<JsonNode> in, Out<JsonNode> out) {
+                try{
+                    room.createPlayer(in, out);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        };
+    }
+
 }

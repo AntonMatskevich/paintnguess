@@ -7,6 +7,8 @@ create table player (
   name                      varchar(255) not null,
   id                        bigint,
   password                  varchar(255),
+  color                     varchar(255),
+  size                      bigint,
   constraint pk_player primary key (name))
 ;
 

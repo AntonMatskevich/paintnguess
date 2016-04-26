@@ -4,9 +4,25 @@
 
     <section id="main_section">
     <article>
-        <h1>game field</h1>
-
+        <div id="game">
+            <canvas id="field" width="800" height="400"></canvas>
+            <div id="viewport">
+                <canvas id="me" width="500" height="400"></canvas>
+                <canvas id="positions" width="500" height="400"></canvas>
+                <canvas id="draws" width="500" height="400"></canvas>
+                <canvas id="controls" width="500" height="50"></canvas>
+            </div>
+            <div id="chat">
+                <canvas id="chat_window" width="300" height="400"></canvas>
+                <script>
+                        var canvas = document.getElementById("chat_window");
+                        var ctx = canvas.getContext("2d");
+                        ctx.fillStyle = "LightGreen";
+                        ctx.fillRect(0, 0, 295, 400);
+                </script>
+            </div>
+        </div>
     </article>
     </section>
-
+    <script type="text/javascript" src="@routes.Assets.at("javascripts/painter.js")"></script>
 }

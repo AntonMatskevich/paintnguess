@@ -18,16 +18,7 @@
     <div id="social_login">
         <ul>
             <li>
-                <a href='@routes.Application.logout()'>Logout ( @player.name )</a>
-            </li>
-            <li>
-                    <!--fb button	--> <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
-            </li>
-            <li>
-                    <!--google button--><div class="g-signin2" data-onsuccess="onSignIn" data-height="25"></div>
-            </li>
-            <li>
-                <button>ID-card</button>
+                <a href='@routes.Application.logout()'>Logout ( <span id="player">@player.name</span> )</a>
             </li>
         </ul>
     </div>
