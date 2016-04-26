@@ -1,0 +1,25 @@
+@(player: Player)
+
+<nav id="top_menu">
+    <ul>
+        <li>
+            <a href='@routes.Application.login()'>Login</a>
+        </li>
+        <li>
+            <a href='@routes.Application.index()'>Home</a>
+        </li>
+        <li>
+            <a href='@routes.Application.rooms()'>Play game</a>
+        </li>
+        <li>
+            <a href='@routes.Application.about()'>About us</a>
+        </li>
+    </ul>
+    <div id="social_login">
+        <ul>
+            <li>
+                <a href='@routes.Application.logout()'>Logout ( <span id="player">@player.name</span> )</a>
+            </li>
+        </ul>
+    </div>
+</nav>

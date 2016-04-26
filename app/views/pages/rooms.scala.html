@@ -1,0 +1,13 @@
+@(player: Player)
+
+@templates.main("Choose playing room", player) {
+
+    <section id="main_section">
+        <article>
+            <h1>Available rooms</h1>
+            <p>
+                <a href='@routes.Application.draw()'>Room #1</a>
+            </p>
+        </article>
+    </section>
+}

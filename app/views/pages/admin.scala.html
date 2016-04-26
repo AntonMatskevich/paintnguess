@@ -1,0 +1,22 @@
+@(players: List[Player], player: Player)
+
+@templates.main("Paint'n'Guess admin", player) {
+
+    <article  class="players">
+        <h2>Players</h2>
+        <h2>@players.size() player(s)</h2>
+
+        <ul>
+        @for(player <- players) {
+            <li>
+                @player.id: @player.name
+
+                @helper.form(routes.Application.deletePlayer(player.id)) {
+                    <input type="submit" value="Delete">
+                    }
+            </li>
+        }
+        </ul>
+    </article>
+
+}

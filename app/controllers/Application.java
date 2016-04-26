@@ -1,147 +1,130 @@
 package controllers;
 
 import com.fasterxml.jackson.databind.JsonNode;
-import models.Gamer;
-import models.PaintRoom;
-import play.api.mvc.Session;
+import models.*;
 import play.data.Form;
-import play.data.validation.ValidationError;
 import play.mvc.*;
-import play.data.*;
-
-import static play.data.Form.*;
-
-import java.util.List;
 
 public class Application extends Controller {
 
-
     public static Result index() {
-        return ok(views.html.index.render(Gamer.all(), gamerForm));
+        return ok(views.html.pages.index.render());
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result mode() {
-        return ok(views.html.mode.render());
-    }
-
-    public static Result aboutUs() {
-        return ok(views.html.aboutus.render());
-    }
-
-    @Security.Authenticated(Secured.class)
-    public static Result card() {
-        return ok(views.html.card.render());
-    }
-
-    public static Result donate() {
-        return ok(views.html.donate.render());
+    public static Result rooms() {
+        return ok(views.html.pages.rooms.render(
+                Player.find.byId(request().username())
+        ));
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result drawing() {
-        return ok(views.html.drawing.render());
+    public static Result draw() {
+        return ok(views.html.pages.draw.render(
+                Player.find.byId(request().username())
+        ));
+    }
+
+    public static Result about() {
+        return ok(views.html.pages.about.render());
+    }
+
+    public static Result login() {
+        return ok(views.html.pages.login.render(
+                Form.form(Login.class),
+                Player.find.all(),
+                playerForm
+        ));
     }
 
     @Security.Authenticated(Secured.class)
-    public static Result drawingGame() {
-        return ok(views.html.drawing_game.render());
-    }
-//<<<<<<< HEAD
-//=======
-
-//>>>>>>> 21ee81d7429e0ce1606a25dfc56b5e0b3cd4c7ff
-    
-//    public static Result removeGamer() {
-//        return redirect(routes.Application.getGamers());
-//    }
-
-    ///////DATABASE
-    static Form<Gamer> gamerForm = Form.form(Gamer.class);
-
-    public static Result addGamer(){
-        Form<Gamer> filledForm = gamerForm.bindFromRequest();
-        if (filledForm.hasErrors()) {
-            return badRequest(
-                    views.html.index.render(Gamer.all(), filledForm)
-            );
+    public static Result admin() {
+        String playerName = Player.find.byId(request().username()).name;
+        if (!playerName.equals("admin")) {
+            return redirect(routes.Application.login());
         } else {
-            Gamer.create(filledForm.get());
-            return redirect(routes.Application.mode());
+            return ok(views.html.pages.admin.render(
+                    Player.find.all(),
+                    Player.find.byId(request().username())
+            ));
         }
     }
-    /////////////Authentication
-    public static Result login() {
-        return ok(
-                views.html.login.render(Form.form(Login.class))
-        );
-    }
 
+    @Security.Authenticated(Secured.class)
     public static Result logout() {
         session().clear();
         flash("success", "You've been logged out");
         return redirect(
-                routes.Application.index()
+                routes.Application.login()
         );
-    }
-
-    public static Result authenticate() {
-        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
-        if (loginForm.hasErrors()) {
-            return badRequest(views.html.login.render(loginForm));
-        } else {
-            session().clear();
-            session("name", loginForm.get().name);
-            return redirect(
-                    routes.Application.mode()
-            );
-        }
-    }
-
-    //View gamers
-    public static Result getGamers(){
-        return ok(views.html.remove_gamer.render(Gamer.all(), gamerForm));
-    }
-
-    public static Result deleteGamer(Integer id) {
-
-        Gamer.delete(id);
-        return redirect(routes.Application.getGamers());
     }
 
     public static class Login {
 
         public String name;
+        public String password;
 
         public String validate() {
-            if (Gamer.authenticate(name) == null) {
-                return "Invalid username";
+            if (Player.authenticate(name, password) == null) {
+                return "Invalid user or password";
             }
             return null;
         }
 
     }
 
-    //////////////PAINTER
-    static PaintRoom env = new PaintRoom("Public");
-
-    public static Result painter() {
-        return ok(views.html.painter.render(env));
+    public static Result authenticate() {
+        Form<Login> loginForm = Form.form(Login.class).bindFromRequest();
+        if (loginForm.hasErrors()) {
+            return badRequest(views.html.pages.login.render(loginForm,
+                    Player.find.all(),
+                    playerForm
+            ));
+        } else {
+            session().clear();
+            session("name", loginForm.get().name);
+            return redirect(
+                    routes.Application.rooms()
+            );
+        }
     }
 
-    public static WebSocket<JsonNode> stream() {
+    static Form<Player> playerForm = Form.form(Player.class);
 
+    public static Result newPlayer() {
+        Form<Player> filledForm = playerForm.bindFromRequest();
+        if(filledForm.hasErrors()) {
+            return badRequest(
+                    views.html.pages.login.render(Form.form(Login.class),
+                            Player.find.all(),
+                            playerForm
+                    ));
+        } else {
+            Player.create(filledForm.get());
+            return redirect(routes.Application.login());
+        }
+    }
+
+    @Security.Authenticated(Secured.class)
+    public static Result deletePlayer(Long id) {
+        Player.delete(id);
+        return redirect(routes.Application.admin());
+    }
+
+    ////////Painter
+    static Room room = new Room("Room #1");
+
+    public static WebSocket<JsonNode> stream() {
         return new WebSocket<JsonNode>() {
             @Override
             public void onReady(In<JsonNode> in, Out<JsonNode> out) {
                 try{
-                    env.createPainter(in, out);
+                    room.createPlayer(in, out);
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
             }
         };
-
     }
 
 }

@@ -1,12 +1,14 @@
 (function(){
 
+    //error functions probably unnecessary
     function removeError () {
         $('#error').fadeOut(500);
     }
     function setError (message) {
         $('#error').empty().append($('<span class="error" />').text(message)).fadeIn(500);
     }
-
+    /////////////////////////
+    
     // Polyfills
     window.requestAnimFrame = (function(){
         return  window.requestAnimationFrame       ||
@@ -35,7 +37,7 @@
     }
 
     var insideIframe = (window.parent != window);
-    var isMobile = /ipad|iphone|android/i.test(navigator.userAgent)
+    var isMobile = /ipad|iphone|android/i.test(navigator.userAgent);
 
     // CONSTANTS
     var COLORS = ['black', 'red', 'blue', 'yellow', 'green'];
@@ -46,7 +48,7 @@
     var color = COLORS[0];
     var size = SIZES[1];
     var pid;
-    var pname;
+    var pname = document.getElementById('player').innerHTML;
     var meCtx;
 
     var numTrace = 1;
@@ -57,29 +59,6 @@
     var players = {};
 
     var viewport = document.getElementById('viewport');
-
-    // Init pname
-    function queryPname() {
-        var n = prompt("What is your name?");
-        if (n) {
-            localStorage.setItem("pname", n);
-        }
-        return n || pname;
-    }
-    pname = localStorage.getItem("pname");
-    if (!insideIframe && !pname) {
-        pname = queryPname();
-    }
-    if (!pname) {
-        pname = "iam"+Math.floor(100*Math.random())
-    }
-
-    $('#pname').text(pname).click(function(e) {
-        e.preventDefault();
-        pname = queryPname();
-        send({ type: 'change', name: pname });
-        $('#pname').text(pname);
-    });
 
     // WebSocket
     var socket;
@@ -374,6 +353,7 @@
             var w = canvas.width, h = canvas.height;
             ctx.fillStyle = 'white';
             ctx.fillRect(0, 0, w, h);
+            send({ type: "change"});
         });
 
         function render() {

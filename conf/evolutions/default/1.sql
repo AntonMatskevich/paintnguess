@@ -3,13 +3,33 @@
 
 # --- !Ups
 
-create table gamer (
-  id                        integer not null,
-  name                      varchar(255),
-  constraint pk_gamer primary key (id))
+create table player (
+  name                      varchar(255) not null,
+  id                        bigint,
+  password                  varchar(255),
+  color                     varchar(255),
+  size                      bigint,
+  constraint pk_player primary key (name))
 ;
 
-create sequence gamer_seq;
+create table room (
+  id                        bigint not null,
+  name                      varchar(255),
+  constraint pk_room primary key (id))
+;
+
+create table team (
+  title                     varchar(255) not null,
+  id                        bigint,
+  room                      bigint,
+  constraint pk_team primary key (title))
+;
+
+create sequence player_seq;
+
+create sequence room_seq;
+
+create sequence team_seq;
 
 
 
@@ -18,9 +38,17 @@ create sequence gamer_seq;
 
 SET REFERENTIAL_INTEGRITY FALSE;
 
-drop table if exists gamer;
+drop table if exists player;
+
+drop table if exists room;
+
+drop table if exists team;
 
 SET REFERENTIAL_INTEGRITY TRUE;
 
-drop sequence if exists gamer_seq;
+drop sequence if exists player_seq;
+
+drop sequence if exists room_seq;
+
+drop sequence if exists team_seq;
 
