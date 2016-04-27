@@ -57,6 +57,7 @@ a {
 }
 #social_login {
     float: right;
+    background: #c1ff80;
 }
 #main_div {
     display:-webkit-box;

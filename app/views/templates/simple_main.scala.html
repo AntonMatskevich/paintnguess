@@ -33,8 +33,8 @@
                     </li>
                 </ul>
                 <div id="social_login">
+                    <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
                     <ul>
-                        <fb:login-button scope="public_profile,email" onlogin="checkLoginState();"></fb:login-button>
                         <li>
                                 <!--google button--><div class="g-signin2" data-onsuccess="onSignIn" data-height="25"></div>
                         </li>
