@@ -1,7 +1,6 @@
 package models;
 
 
-import controllers.routes;
 import play.db.ebean.Model;
 
 import javax.persistence.*;
