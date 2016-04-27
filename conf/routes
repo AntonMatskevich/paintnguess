@@ -15,7 +15,6 @@ GET     /stream                     controllers.Application.stream()
 #Login stuff
 POST    /login                      controllers.Application.authenticate()
 GET     /logout                     controllers.Application.logout()
-GET     /player                     controllers.Application.login()
 POST    /player                     controllers.Application.newPlayer()
 
 #Administrative page
