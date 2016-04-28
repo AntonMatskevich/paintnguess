@@ -18,12 +18,14 @@ public class Player extends Model {
     public String name;
     public Long id;
     public String password;
+    public int points;
 
     public static Long idCounter = Long.valueOf(0);
 
     public Player(String name, String password) {
         this.name = name;
         this.password = password;
+        points = 0;
     }
 
     public static Finder<String, Player> find = new Finder<String, Player>(String.class, Player.class);

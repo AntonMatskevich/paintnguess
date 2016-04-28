@@ -101,7 +101,7 @@ public class Application extends Controller {
                     ));
         } else {
             Player.create(filledForm.get());
-            return redirect(routes.Application.login());
+            return redirect(routes.Application.rooms());
         }
     }
 
