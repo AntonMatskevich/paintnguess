@@ -1,13 +1,4 @@
 (function(){
-
-    //error functions probably unnecessary
-    function removeError () {
-        $('#error').fadeOut(500);
-    }
-    function setError (message) {
-        $('#error').empty().append($('<span class="error" />').text(message)).fadeIn(500);
-    }
-    /////////////////////////
     
     // Polyfills
     window.requestAnimFrame = (function(){
