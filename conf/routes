@@ -13,8 +13,9 @@ GET     /draw                       controllers.Application.draw()
 GET     /stream                     controllers.Application.stream()
 
 #Chat/words guesser
+
 # Home page
-GET     /chat                            controllers.Application.prechat()
+#GET     /chat                            controllers.Application.prechat()
 GET     /room                            controllers.Application.chatRoom(username: String ?= null)
 GET     /room/chat                       controllers.Application.chat(username)
 GET     /assets/javascripts/chatroom.js  controllers.Application.chatRoomJs(username)

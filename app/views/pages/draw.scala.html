@@ -5,25 +5,31 @@
     <section id="main_section">
     <article>
         <div id="game">
-            <canvas id="field" width="800" height="400"></canvas>
-            <div id="viewport">
-                <canvas id="me" width="500" height="400"></canvas>
-                <canvas id="positions" width="500" height="400"></canvas>
-                <canvas id="draws" width="500" height="400"></canvas>
-                <canvas id="controls" width="500" height="50"></canvas>
+            <div id="painter">
+                <canvas id="field" width="500" height="400"></canvas>
+                <div id="viewport">
+                    <canvas id="me" width="500" height="400"></canvas>
+                    <canvas id="positions" width="500" height="400"></canvas>
+                    <canvas id="draws" width="500" height="400"></canvas>
+                    <canvas id="controls" width="500" height="50"></canvas>
+                </div>
             </div>
-            <div id="chat">
-                <canvas id="chat_window" width="300" height="400"></canvas>
-                <script>
-                        var canvas = document.getElementById("chat_window");
-                        var ctx = canvas.getContext("2d");
-                        ctx.fillStyle = "LightGreen";
-                        ctx.fillRect(0, 0, 295, 400);
-                </script>
+            @*<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/bootstrap.css")">*@
+            <div id="chat" class="container">
+                <div class="content">
+                    <div id="onChat" class="row">
+                        <div class="span10" id="main">
+                            <div id="messages">
+                            </div>
+                            <textarea id="talk"></textarea>
+                        </div>
+                    </div>
+
+                </div>
             </div>
         </div>
     </article>
     </section>
     <script type="text/javascript" src="@routes.Assets.at("javascripts/painter.js")"></script>
-    <script type="text/javascript" src="@routes.Assets.at("javascripts/words.js")"></script>
+    <script type="text/javascript" charset="utf-8" src="@routes.Application.chatRoomJs(player.name)"></script>
 }

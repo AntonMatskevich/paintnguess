@@ -156,13 +156,6 @@ label {
     margin-top:2px;
 }
 
-#chat {
-    color:red;
-}
-#painting {
-    color:pink;
-}
-
 #googleMap {
     width:100%;
     height:400px;
@@ -194,6 +187,15 @@ form, dd {
     position: relative;
     left: 4%;
 }
+
+#painter {
+    float: left;
+}
+
+#chat {
+    float: right;
+}
+
 /*Painter*/
 #viewport {
     /*width: 800px;*/
@@ -223,11 +225,169 @@ canvas {
 }
 
 /*Chat*/
-#chat {
+
+/*html, body {*/
+    /*background-color: #eee;*/
+/*}*/
+/*body {*/
+    /*padding-top: 40px; !* 40px to make the container go all the way to the bottom of the topbar *!*/
+/*}*/
+.container > footer p {
+    text-align: center; /* center align it with the container */
+}
+.container {
+    /*width: 820px; !* downsize our container to make the content feel a bit tighter and more cohesive. NOTE: this removes two full columns from the grid, meaning you only go to 14 columns and not 16. *!*/
+    width: 300px;
+    height: 400px;
+}
+
+/* The white background content wrapper */
+.content {
+    background-color: #fff;
+    /*padding: 20px;*/
+    /*margin: 0 -20px; !* negative indent the amount of the padding to maintain the grid system *!*/
+    -webkit-border-radius: 0 0 6px 6px;
+    -moz-border-radius: 0 0 6px 6px;
+    border-radius: 0 0 6px 6px;
+    -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    -moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    box-shadow: 0 1px 2px rgba(0,0,0,.15);
+    min-height: 10px;
+}
+
+/* Styles you shouldn't keep as they are for displaying this base example only */
+.content .span10,
+.content {
+    min-height: 400px;
+}
+
+/* Give a quick and non-cross-browser friendly divider */
+/*.content {*/
+    /*padding-left: 9px;*/
+    /*margin-left: 10px;*/
+    /*border-left: 1px solid #eee;*/
+/*}*/
+
+.topbar .btn {
+    border: 0;
+}
+
+.topbar p {
+    color: #888;
+}
+
+#username {
+    width: 200px;
+}
+
+#main {
+    position: relative;
+    overflow: hidden;
+}
+
+#onError, #onChat {
+    display: none;
+}
+
+#messages {
+    position: absolute;
+    bottom: 20px;
+}
+
+#talk {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    width: 298px;
+    height: 20px;
+}
+
+.message {
+    /*padding: 4px 0;*/
+    border-bottom: 1px solid #eee;
+    position: relative;
+}
+
+.message span {
+    width: 290px;
+    overflow: hidden;
+    /*text-align: right;*/
+    font-weight: bold;
+    font-size: 13px;
+    /*margin-right: 5px;*/
+    display: inline-block;
+    vertical-align: top;
+    position: relative;
+    top: 3px;
+}
+
+.message p {
+    display: inline-block;
+    font-size: 12px;
+    text-align: left;
+    margin: 0;
+    width: 300px;
+}
+
+.message.me {
+    background: #FFC;
+}
+
+.message.join, .message.quit {
+    background: #D9E7FB;
+}
+/*textarea {*/
+    /*-moz-user-select: text;*/
+    /*-webkit-user-select: text;*/
+    /*-ms-user-select: text;*/
+/*}*/
+/*textarea {*/
+    /*font-size: 100%;*/
+    /*margin: 0;*/
+    /*vertical-align: baseline;*/
+    /**vertical-align: middle;*/
+/*}*/
+/*textarea {*/
+    /*overflow: auto;*/
+    /*vertical-align: top;*/
+/*}*/
+/*textarea {*/
+    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
+    /*font-size: 13px;*/
+    /*font-weight: normal;*/
+    /*line-height: normal;*/
+/*}*/
+/*textarea {*/
     /*display: inline-block;*/
-}
-#chat_window {
-    z-index: 4;
-    /*top: 1%;*/
-    left: 500px;
-}
+    /*width: 210px;*/
+    /*height: 18px;*/
+    /*padding: 4px;*/
+    /*font-size: 13px;*/
+    /*line-height: 18px;*/
+    /*color: #808080;*/
+    /*border: 1px solid #ccc;*/
+    /*-webkit-border-radius: 3px;*/
+    /*-moz-border-radius: 3px;*/
+    /*border-radius: 3px;*/
+/*}*/
+/*textarea {*/
+    /*height: auto;*/
+/*}*/
+/*textarea {*/
+    /*-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;*/
+    /*-moz-transition: border linear 0.2s, box-shadow linear 0.2s;*/
+    /*-ms-transition: border linear 0.2s, box-shadow linear 0.2s;*/
+    /*-o-transition: border linear 0.2s, box-shadow linear 0.2s;*/
+    /*transition: border linear 0.2s, box-shadow linear 0.2s;*/
+    /*-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);*/
+    /*-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);*/
+    /*box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);*/
+/*}*/
+/*textarea:focus {*/
+    /*outline: 0;*/
+    /*border-color: rgba(82, 168, 236, 0.8);*/
+    /*-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);*/
+    /*-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);*/
+    /*box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);*/
+/*}*/

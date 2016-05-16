@@ -20,7 +20,7 @@
                     @if(connected != null) {
                         <p class="pull-right">
                             Logged in as @connected —
-                            <a href="@routes.Application.index()">Disconnect</a>
+                            <a href="@routes.Application.rooms()">Disconnect</a>
                         </p>
                     } else {
                         <form action="@routes.Application.chatRoom()" class="pull-right">
