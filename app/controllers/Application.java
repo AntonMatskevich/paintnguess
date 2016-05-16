@@ -139,15 +139,22 @@ public class Application extends Controller {
     @Security.Authenticated(Secured.class)
     public static Result chatRoom(String username) {
         username = Player.find.byId(request().username()).name;
-        if(username == null || username.trim().equals("")) {
-            flash("error", "Please choose a valid username.");
-            return redirect(routes.Application.index());
-        }
-        return ok(views.html.pages.chatRoom.render(username));
+//        if(username == null || username.trim().equals("")) {
+//            flash("error", "Please choose a valid username.");
+//            return redirect(routes.Application.index());
+//        }
+//        return ok(views.html.pages.chatRoom.render(username));
+        return ok(views.html.pages.chatRoom.render(
+                username,
+                Player.find.byId(request().username())
+        ));
     }
 
     public static Result chatRoomJs(String username) {
         return ok(views.js.chatRoom.render(username));
+    }
+    public static Result gameRoomJs() {
+        return ok(views.js.gameRoom.render());
     }
 
     public static WebSocket<JsonNode> chat(final String username) {
