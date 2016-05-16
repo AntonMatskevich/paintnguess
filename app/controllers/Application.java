@@ -127,4 +127,36 @@ public class Application extends Controller {
         };
     }
 
+    ///////Chat
+    @Security.Authenticated(Secured.class)
+    public static Result prechat() {
+        return ok(views.html.pages.prechat.render());
+    }
+
+    public static Result chatRoom(String username) {
+        if(username == null || username.trim().equals("")) {
+            flash("error", "Please choose a valid username.");
+            return redirect(routes.Application.index());
+        }
+        return ok(views.html.pages.chatRoom.render(username));
+    }
+
+    public static Result chatRoomJs(String username) {
+        return ok(views.js.chatRoom.render(username));
+    }
+
+    public static WebSocket<JsonNode> chat(final String username) {
+        return new WebSocket<JsonNode>() {
+
+            public void onReady(WebSocket.In<JsonNode> in, WebSocket.Out<JsonNode> out){
+
+                try {
+                    ChatRoom.join(username, in, out);
+                } catch (Exception ex) {
+                    ex.printStackTrace();
+                }
+            }
+        };
+    }
+
 }
