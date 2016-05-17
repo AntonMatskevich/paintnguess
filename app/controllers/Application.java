@@ -127,23 +127,10 @@ public class Application extends Controller {
         };
     }
 
-    ///////Chat (the real one)
-
-
-    ///////Chat example
-    @Security.Authenticated(Secured.class)
-    public static Result prechat() {
-        return ok(views.html.pages.prechat.render());
-    }
-
+    ///////Chat
     @Security.Authenticated(Secured.class)
     public static Result chatRoom(String username) {
         username = Player.find.byId(request().username()).name;
-//        if(username == null || username.trim().equals("")) {
-//            flash("error", "Please choose a valid username.");
-//            return redirect(routes.Application.index());
-//        }
-//        return ok(views.html.pages.chatRoom.render(username));
         return ok(views.html.pages.chatRoom.render(
                 username,
                 Player.find.byId(request().username())

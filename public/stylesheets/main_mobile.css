@@ -76,12 +76,8 @@ a {
     font-size: 6px;
 }
 
-/*Check width of this mazafaka footer! It's too long being 1000px.*/
 #the_footer {
-    /*position: absolute;*/
-    /*bottom: 20px;*/
-    max-width:970px;
-    width: 100%;
+    max-width:1000px;
     text-align:center;
     padding:20px;
     border-top:2px solid green;

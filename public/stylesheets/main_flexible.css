@@ -76,12 +76,8 @@ a {
     font-size: 16px;
 }
 
-/*Check width of this mazafaka footer! It's too long being 1000px.*/
 #the_footer {
-    /*position: absolute;*/
-    /*bottom: 20px;*/
-    max-width:970px;
-    width: 100%;
+    max-width:1000px;
     text-align:center;
     padding:20px;
     border-top:2px solid green;
@@ -337,57 +333,3 @@ canvas {
 .message.join, .message.quit {
     background: #D9E7FB;
 }
-/*textarea {*/
-    /*-moz-user-select: text;*/
-    /*-webkit-user-select: text;*/
-    /*-ms-user-select: text;*/
-/*}*/
-/*textarea {*/
-    /*font-size: 100%;*/
-    /*margin: 0;*/
-    /*vertical-align: baseline;*/
-    /**vertical-align: middle;*/
-/*}*/
-/*textarea {*/
-    /*overflow: auto;*/
-    /*vertical-align: top;*/
-/*}*/
-/*textarea {*/
-    /*font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;*/
-    /*font-size: 13px;*/
-    /*font-weight: normal;*/
-    /*line-height: normal;*/
-/*}*/
-/*textarea {*/
-    /*display: inline-block;*/
-    /*width: 210px;*/
-    /*height: 18px;*/
-    /*padding: 4px;*/
-    /*font-size: 13px;*/
-    /*line-height: 18px;*/
-    /*color: #808080;*/
-    /*border: 1px solid #ccc;*/
-    /*-webkit-border-radius: 3px;*/
-    /*-moz-border-radius: 3px;*/
-    /*border-radius: 3px;*/
-/*}*/
-/*textarea {*/
-    /*height: auto;*/
-/*}*/
-/*textarea {*/
-    /*-webkit-transition: border linear 0.2s, box-shadow linear 0.2s;*/
-    /*-moz-transition: border linear 0.2s, box-shadow linear 0.2s;*/
-    /*-ms-transition: border linear 0.2s, box-shadow linear 0.2s;*/
-    /*-o-transition: border linear 0.2s, box-shadow linear 0.2s;*/
-    /*transition: border linear 0.2s, box-shadow linear 0.2s;*/
-    /*-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);*/
-    /*-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);*/
-    /*box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1);*/
-/*}*/
-/*textarea:focus {*/
-    /*outline: 0;*/
-    /*border-color: rgba(82, 168, 236, 0.8);*/
-    /*-webkit-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);*/
-    /*-moz-box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);*/
-    /*box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.1), 0 0 8px rgba(82, 168, 236, 0.6);*/
-/*}*/
