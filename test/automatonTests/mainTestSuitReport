@@ -16,197 +16,251 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 </head>
 <body>
 <table id="suiteSummaryTable" class="selenium">
-<thead><tr class="failed"><td>Test Suite: mainTestSuit</td></tr></thead>
+<thead><tr class="passed"><td>Test Suite: mainTestSuit</td></tr></thead>
 <tbody>
-<tr><td>Test cases: 8 total / <span class="passed">0</span> passed / <span class="failed">8</span> failed</td></tr>
-<tr><td>Commands: 41 total / <span class="passed">0</span> passed / <span class="failed">0</span> failed / <span class="skipped">41</span> skipped</td></tr>
+<tr><td>Test cases: 8 total / <span class="passed">8</span> passed / <span class="failed">0</span> failed</td></tr>
+<tr><td>Commands: 55 total / <span class="passed">55</span> passed / <span class="failed">0</span> failed / <span class="skipped">0</span> skipped</td></tr>
 </tbody></table><br>
 <table id="suiteTable" class="selenium">
 <thead><tr><td>Index of test cases</td></tr></thead>
 <tbody>
-<tr class=""><td><a href="#test0">loginTest</a></td></tr>
-<tr class=""><td><a href="#test1">chooseRoomTest</a></td></tr>
-<tr class=""><td><a href="#test2">writeChatTest</a></td></tr>
-<tr class=""><td><a href="#test3">painterTest</a></td></tr>
-<tr class=""><td><a href="#test4">aboutUsTest</a></td></tr>
-<tr class=""><td><a href="#test5">logoutTest</a></td></tr>
-<tr class=""><td><a href="#test6">wrongLoginTest</a></td></tr>
-<tr class=""><td><a href="#test7">existingRegTest</a></td></tr>
+<tr class="passed"><td><a href="#test0">loginTest</a></td></tr>
+<tr class="passed"><td><a href="#test1">chooseRoomTest</a></td></tr>
+<tr class="passed"><td><a href="#test2">writeChatTest</a></td></tr>
+<tr class="passed"><td><a href="#test3">painterTest</a></td></tr>
+<tr class="passed"><td><a href="#test4">aboutUsTest</a></td></tr>
+<tr class="passed"><td><a href="#test5">logoutTest</a></td></tr>
+<tr class="passed"><td><a href="#test6">wrongLoginTest</a></td></tr>
+<tr class="passed"><td><a href="#test7">existingRegTest</a></td></tr>
 
 </tbody></table>
 
-<br><hr><br><a name="test0"></a><table class="test_case"><thead><tr><td colspan="4">Test case: loginTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test0"></a><table class="test_case"><thead><tr><td colspan="4">Test case: loginTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Login</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=name1</td>
 	<td>test12345</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=pass1</td>
 	<td>test12345</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>css=button[type=&quot;submit&quot;]</td>
 	<td></td>
 	<td></td>
 </tr>
-
-</tbody></table>
-
-<br><hr><br><a name="test1"></a><table class="test_case"><thead><tr><td colspan="4">Test case: chooseRoomTest</td></tr></thead><tbody><tr class="">
-	<td>open</td>
-	<td>/rooms</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr class="">
-	<td>clickAndWait</td>
-	<td>link=Play game</td>
-	<td></td>
-	<td></td>
-</tr>
-<tr class="">
-	<td>clickAndWait</td>
-	<td>link=Room #1</td>
-	<td></td>
+<tr class="passed">
+	<td>assertText</td>
+	<td>id=player</td>
+	<td>test12345</td>
 	<td></td>
 </tr>
 
 </tbody></table>
 
-<br><hr><br><a name="test2"></a><table class="test_case"><thead><tr><td colspan="4">Test case: writeChatTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test1"></a><table class="test_case"><thead><tr><td colspan="4">Test case: chooseRoomTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/rooms</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Play game</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Room #1</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Paint'n'Guess draw</td>
+	<td></td>
+</tr>
+
+</tbody></table>
+
+<br><hr><br><a name="test2"></a><table class="test_case"><thead><tr><td colspan="4">Test case: writeChatTest</td></tr></thead><tbody><tr class="done">
+	<td>open</td>
+	<td>/rooms</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Play game</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
+	<td>clickAndWait</td>
+	<td>link=Room #1</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
 	<td>type</td>
 	<td>id=talk</td>
 	<td>DIS MESSAGE BE WRITTEN FOR TESTING</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>sendKeys</td>
 	<td>id=talk</td>
 	<td>${KEY_ENTER}</td>
+	<td>Command execution failure. Please search the user group at https://groups.google.com/forum/#!forum/selenium-users for error details from the log window.  The error message is: Element is not currently interactable and may not be manipulated</td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>//div[@id='messages']/div[2]/p</td>
+	<td>DIS MESSAGE BE WRITTEN FOR TESTING</td>
 	<td></td>
 </tr>
 
 </tbody></table>
 
-<br><hr><br><a name="test3"></a><table class="test_case"><thead><tr><td colspan="4">Test case: painterTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test3"></a><table class="test_case"><thead><tr><td colspan="4">Test case: painterTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Play game</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Chat #1</td>
 	<td></td>
 	<td></td>
 </tr>
+<tr class="passed">
+	<td>assertElementPresent</td>
+	<td>id=draws</td>
+	<td></td>
+	<td></td>
+</tr>
 
 </tbody></table>
 
-<br><hr><br><a name="test4"></a><table class="test_case"><thead><tr><td colspan="4">Test case: aboutUsTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test4"></a><table class="test_case"><thead><tr><td colspan="4">Test case: aboutUsTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/room</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Play game</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=About us</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>About Paint'n'Guess team</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertElementPresent</td>
+	<td>css=iframe</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Play game</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>css=#the_footer &gt; p &gt; a</td>
 	<td></td>
 	<td></td>
 </tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>About Paint'n'Guess team</td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertElementPresent</td>
+	<td>css=iframe</td>
+	<td></td>
+	<td></td>
+</tr>
 
 </tbody></table>
 
-<br><hr><br><a name="test5"></a><table class="test_case"><thead><tr><td colspan="4">Test case: logoutTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test5"></a><table class="test_case"><thead><tr><td colspan="4">Test case: logoutTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/rooms</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="passed">
+	<td>assertElementPresent</td>
+	<td>link=Logout ( test12345 )</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Play game</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>id=player</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Home</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Play game</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Login</td>
 	<td></td>
@@ -215,91 +269,121 @@ th, td { padding-left: 0.3em; padding-right: 0.3em; border: 1px solid #ccc; }
 
 </tbody></table>
 
-<br><hr><br><a name="test6"></a><table class="test_case"><thead><tr><td colspan="4">Test case: wrongLoginTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test6"></a><table class="test_case"><thead><tr><td colspan="4">Test case: wrongLoginTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/login</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h2</td>
+	<td>Log in or register</td>
+	<td></td>
+</tr>
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>link=Login</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=name1</td>
 	<td>test54321</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=pass1</td>
 	<td>test54321</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>css=button[type=&quot;submit&quot;]</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=p.error</td>
+	<td>Invalid user or password</td>
+	<td></td>
+</tr>
+<tr class="done">
 	<td>type</td>
 	<td>id=name1</td>
 	<td>test12345</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=pass1</td>
 	<td>test1234567890</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>css=button[type=&quot;submit&quot;]</td>
 	<td></td>
 	<td></td>
 </tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=p.error</td>
+	<td>Invalid user or password</td>
+	<td></td>
+</tr>
 
 </tbody></table>
 
-<br><hr><br><a name="test7"></a><table class="test_case"><thead><tr><td colspan="4">Test case: existingRegTest</td></tr></thead><tbody><tr class="">
+<br><hr><br><a name="test7"></a><table class="test_case"><thead><tr><td colspan="4">Test case: existingRegTest</td></tr></thead><tbody><tr class="done">
 	<td>open</td>
 	<td>/login</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
-	<td>clickAndWait</td>
-	<td>link=Login</td>
-	<td></td>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Log in Paint'n'Guess</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=name2</td>
 	<td>test12345</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>type</td>
 	<td>id=pass2</td>
 	<td>test12345</td>
 	<td></td>
 </tr>
-<tr class="">
+<tr class="done">
 	<td>clickAndWait</td>
 	<td>xpath=(//button[@type='submit'])[2]</td>
 	<td></td>
 	<td></td>
 </tr>
-<tr class="">
-	<td>open</td>
-	<td>/login</td>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Oops, an error occured</td>
 	<td></td>
+</tr>
+<tr class="done">
+	<td>open</td>
+	<td>/</td>
+	<td></td>
+	<td></td>
+</tr>
+<tr class="passed">
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Welcome to Paint'n'Guess</td>
 	<td></td>
 </tr>
 

@@ -17,9 +17,9 @@
 	<td></td>
 </tr>
 <tr>
-	<td>clickAndWait</td>
-	<td>link=Login</td>
-	<td></td>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Log in Paint'n'Guess</td>
 </tr>
 <tr>
 	<td>type</td>
@@ -37,11 +37,20 @@
 	<td></td>
 </tr>
 <tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Oops, an error occured</td>
+</tr>
+<tr>
 	<td>open</td>
-	<td>/login</td>
+	<td>/</td>
 	<td></td>
 </tr>
-
+<tr>
+	<td>assertText</td>
+	<td>css=h1</td>
+	<td>Welcome to Paint'n'Guess</td>
+</tr>
 </tbody></table>
 </body>
 </html>
