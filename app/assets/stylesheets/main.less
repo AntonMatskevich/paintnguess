@@ -1,0 +1,297 @@
+// Color variables (appears count calculates by raw css)
+@color0: #c1ff80; // Appears 14 times
+@color1: #d9e7fb; // Appears 2 times
+@color2: #edffe6; // Appears 2 times
+@color3: #a2ff80; // Appears 2 times
+
+// Width variables (appears count calculates by raw css)
+@width0: 1000px; // Appears 2 times
+@width4: 300px; // Appears 2 times
+@width6: 100%; // Appears 2 times
+@width7: 45%; // Appears 2 times
+
+// Height variables (appears count calculates by raw css)
+@height0: 400px; // Appears 5 times
+
+* {
+	background: @color2;
+	font-family: Palatino Linotype;
+	margin:0px;
+	padding:0px;
+}
+h1 {
+	background: @color0;
+	font:bold 26px Palatino Linotype;
+	text-align:center;
+}
+h2 {
+	background:@color0;
+	font:bold 14px Palatino Linotype;
+}
+header, section, footer, nav, article  {
+	display:block;
+}
+body {
+	-webkit-box-pack:center;
+	display:-webkit-box;
+	width:@width6;
+}
+a {
+	background:@color0;
+	color:green;
+	text-decoration: none;
+}
+#big_wrapper {
+	-webkit-box-flex: 1;
+	-webkit-box-orient:vertical;
+	display:-webkit-box;
+	margin:20px 0px;
+	max-width:@width0;
+}
+#top_header {
+	background:@color0;
+	border-bottom:2px solid green;
+	padding:20px;
+}
+#top_menu {
+	background:@color0;
+	border-bottom:2px solid green;
+	color:green;
+	li {
+		background:@color0;
+		display:inline-block;
+		font:bold 14px Palatino Linotype;
+		list-style:none;
+		padding:5px;
+	}
+	ul {
+		background:@color0;
+		display:inline-block;
+	}
+}
+#social_login {
+	background: @color0;
+	float: right;
+}
+#main_div {
+	-webkit-box-orient:horizontal;
+	display:-webkit-box;
+}
+#main_section {
+	-webkit-box-flex: 1;
+	border:1px solid @color0;
+	margin:20px;
+	padding:20px;
+	h2 {
+		font-size: 16px;
+		padding: 5px;
+		text-align: center;
+	}
+}
+#the_footer {
+	background:@color0;
+	border-top:2px solid green;
+	max-width:@width0;
+	padding:20px;
+	text-align:center;
+	p {
+		background:@color0;
+	}
+	a {
+		background:@color0;
+	}
+}
+article {
+	border: 1px solid green;
+	margin-bottom: 15px;
+	padding: 20px;
+	text-align: center;
+	li {
+		list-style: none;
+	}
+}
+button {
+	background:@color3;
+	color:black;
+	padding:2px;
+}
+input[type=submit] {
+	background:@color3;
+	color:black;
+	padding:2px;
+}
+label {
+	display: none;
+}
+.info {
+	display: none;
+}
+#guessing_buttons {
+	button {
+		margin: 5px;
+		padding:10px;
+	}
+}
+.skip_button {
+	background:darkslategray;
+	color:white;
+	float:left;
+	width:@width7;
+}
+.correct_button {
+	background:green;
+	color:white;
+	float:right;
+	width:@width7;
+}
+.ready_button {
+	background:green;
+	color:white;
+	left:20%;
+	margin: 5px;
+	padding:10px;
+	position:relative;
+	top:20%;
+	width:60%;
+}
+#words {
+	color:red;
+	float:right;
+	li {
+		margin-top:2px;
+		padding-left:10px;
+	}
+}
+#googleMap {
+	height:@height0;
+	width:@width6;
+}
+form {
+	background: @color0;
+	display: inline;
+}
+dd {
+	background: @color0;
+	display: inline;
+}
+#specialButton {
+	background: @color2;
+}
+#game {
+	background: white;
+	height: @height0;
+	left: 4%;
+	position: relative;
+	width: 800px;
+}
+#painter {
+	float: left;
+}
+#chat {
+	float: right;
+}
+#viewport {
+}
+canvas {
+	left: 0;
+	position: absolute;
+	top: 0;
+}
+#positions {
+	z-index: 2;
+}
+#me {
+	z-index: 2;
+}
+#draws {
+	z-index: 2;
+}
+#controls {
+	z-index: 4;
+}
+.container>footer {
+	p {
+		text-align: center;
+	}
+}
+.container {
+	height: @height0;
+	width: @width4;
+}
+.content {
+	-moz-border-radius: 0 0 6px 6px;
+	-moz-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	-webkit-border-radius: 0 0 6px 6px;
+	-webkit-box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	background-color: #ffffff;
+	border-radius: 0 0 6px 6px;
+	box-shadow: 0 1px 2px rgba(0,0,0,.15);
+	min-height: 10px;
+	min-height: @height0;
+	.span10 {
+		min-height: @height0;
+	}
+}
+.topbar {
+	.btn {
+		border: 0;
+	}
+	p {
+		color: #888888;
+	}
+}
+#username {
+	width: 200px;
+}
+#main {
+	overflow: hidden;
+	position: relative;
+}
+#onError {
+	display: none;
+}
+#onChat {
+	display: none;
+}
+#messages {
+	bottom: 20px;
+	position: absolute;
+}
+#talk {
+	bottom: 0;
+	height: 20px;
+	left: 0;
+	position: absolute;
+	right: 0;
+	width: 298px;
+}
+.message {
+	border-bottom: 1px solid #eeeeee;
+	position: relative;
+	span {
+		display: inline-block;
+		font-size: 13px;
+		font-weight: bold;
+		overflow: hidden;
+		position: relative;
+		top: 3px;
+		vertical-align: top;
+		width: 290px;
+	}
+	p {
+		display: inline-block;
+		font-size: 12px;
+		margin: 0;
+		text-align: left;
+		width: @width4;
+	}
+}
+.message.me {
+	background: #ffffcc;
+}
+.message.join {
+	background: @color1;
+}
+.message.quit {
+	background: @color1;
+}
