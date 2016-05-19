@@ -5,6 +5,7 @@ import play.db.ebean.Model;
 
 import javax.persistence.*;
 
+import static java.lang.System.currentTimeMillis;
 import static play.mvc.Controller.flash;
 
 /**
@@ -19,8 +20,6 @@ public class Player extends Model {
     public Long id;
     public String password;
     public int points;
-
-    public static Long idCounter = Long.valueOf(0);
 
     public Player(String name, String password) {
         this.name = name;
@@ -37,9 +36,9 @@ public class Player extends Model {
 
 
     public static Player create(Player player) {
-            player.id = idCounter++;
-            player.save();
-            return player;
+        player.id = currentTimeMillis();
+        player.save();
+        return player;
     }
 
     public static void delete(Long id) {
