@@ -7,8 +7,8 @@ $(function() {
     var sendMessage = function() {
         chatSocket.send(JSON.stringify(
             {text: $("#talk").val()}
-        ))
-        $("#talk").val('')
+        ));
+        $("#talk").val('');
     };
 
     var receiveEvent = function(event) {
@@ -21,7 +21,7 @@ $(function() {
             $("#onError").show();
             return
         } else {
-            $("#onChat").show()
+            $("#onChat").show();
         }
 
         // Create the message element
@@ -44,7 +44,7 @@ $(function() {
     var handleReturnKey = function(e) {
         if(e.charCode == 13 || e.keyCode == 13) {
             e.preventDefault();
-            sendMessage()
+            sendMessage();
         }
     };
 

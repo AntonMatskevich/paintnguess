@@ -334,18 +334,18 @@ $(function(){
             }
         });
 
-        document.addEventListener("dblclick", function (e) {
-            var canvas = document.getElementById("draws");
-            var ctx = canvas.getContext("2d");
-            ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-            dirty = true;
-            ctx.strokeStyle = 'white';
-            ctx.stroke();
-            var w = canvas.width, h = canvas.height;
-            ctx.fillStyle = 'white';
-            ctx.fillRect(0, 0, w, h);
-            send({ type: "change"});
-        });
+        // document.addEventListener("dblclick", function (e) {
+        //     var canvas = document.getElementById("draws");
+        //     var ctx = canvas.getContext("2d");
+        //     ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+        //     dirty = true;
+        //     ctx.strokeStyle = 'white';
+        //     ctx.stroke();
+        //     var w = canvas.width, h = canvas.height;
+        //     ctx.fillStyle = 'white';
+        //     ctx.fillRect(0, 0, w, h);
+        //     send({ type: "change"});
+        // });
 
         function render() {
             if (!dirty) return;
