@@ -49,7 +49,7 @@ public class Player extends Model {
 
     public static void delete(Long id) {
         for(Player p : find.all()) {
-            if(p.id == id) {
+            if(p.id.equals(id)) {
                 find.ref(p.name).delete();
             }
         }
