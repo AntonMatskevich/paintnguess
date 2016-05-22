@@ -239,34 +239,18 @@ $(function(){
         document.addEventListener(isMobile ? "touchend"  : "mouseup",   onMouseUp);
         viewport.addEventListener(isMobile ? "touchmove" : "mousemove", onMouseMove);
 
-    }());
+        document.addEventListener("dblclick", function (e) {
+            var canvas = document.getElementById("draws");
+            var ctx = canvas.getContext("2d");
+            canvas.width+=0;
+            ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
+            ctx.strokeStyle = 'white';
+            ctx.stroke();
+            var w = canvas.width, h = canvas.height;
+            ctx.fillStyle = 'white';
+            ctx.fillRect(0, 0, w, h);
+        });
 
-    (function(){
-        var canvas = document.getElementById("positions");
-        var ctx = canvas.getContext("2d");
-
-        ctx.font = "9px monospace";
-        ctx.textAlign = "center";
-        ctx.textBaseline = "bottom";
-        function render () {
-            if(!dirty_positions) return;
-            dirty_positions = false;
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (var pid in players) { var player = players[pid];
-                if (!player || player.x===undefined) continue;
-                ctx.beginPath();
-                ctx.strokeStyle = player.color;
-                ctx.arc(player.x, player.y, player.size/2, 0, 2*Math.PI);
-                ctx.stroke();
-                ctx.fillStyle = player.color;
-                ctx.fillText((player.name+"").substring(0,20), player.x, player.y-Math.round(player.size/2)-4);
-            }
-        }
-
-        requestAnimFrame(function loop () {
-            requestAnimFrame(loop);
-            render();
-        }, canvas);
     }());
 
     (function(){
@@ -337,14 +321,13 @@ $(function(){
         document.addEventListener("dblclick", function (e) {
             var canvas = document.getElementById("draws");
             var ctx = canvas.getContext("2d");
+            canvas.width+=0;
             ctx.clearRect(0,0,ctx.canvas.width,ctx.canvas.height);
-            dirty = true;
             ctx.strokeStyle = 'white';
             ctx.stroke();
             var w = canvas.width, h = canvas.height;
             ctx.fillStyle = 'white';
             ctx.fillRect(0, 0, w, h);
-            send({ type: "change"});
         });
 
         function render() {
