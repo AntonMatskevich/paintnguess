@@ -37,6 +37,11 @@
                 @form.globalError.message
                 </p>
             }
+            @if(flash.contains("existing_player")) {
+                <p class="success">
+                @flash.get("existing_player")
+                </p>
+            }
             <p>
                 <label for="name2">Name:</label>
                 <input type="text" id="name2" name="name" placeholder="Name" value="@form("name").value">
