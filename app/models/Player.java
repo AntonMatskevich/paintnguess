@@ -37,8 +37,14 @@ public class Player extends Model {
 
     public static Player create(Player player) {
         player.id = currentTimeMillis();
-        player.save();
-        return player;
+        if(find.where().eq("name", player.name).findUnique() == null) {
+            player.save();
+            return player;
+        } else {
+            flash("existing_player", "This username already exists!");
+            return find.where().eq("name", player.name)
+                    .eq("password", player.password).findUnique();
+        }
     }
 
     public static void delete(Long id) {
